@@ -45,7 +45,7 @@ func main() {
 	pages := getPages()
 	postBs := getPostBase()
 
-	startUpProcesses(pages) // creates static pages
+	startUpProcesses(pages[0], pages) // creates static page
 
 	for _, post := range postBs {
 		http.Handle(post.ref, templ.Handler(getBlog(post, pages)))
@@ -76,25 +76,22 @@ func wrap(h http.Handler) http.Handler {
 	})
 }
 
-func startUpProcesses(pages Pages) {
-	for _, page := range pages {
-
-		if _, err := os.Stat(page.dir); os.IsNotExist(err) {
-			if err := os.Mkdir(page.dir, 0755); err != nil {
-				log.Fatalf("failed to create output directory: %v", err)
-			}
+func startUpProcesses(page Page, pages Pages) {
+	if _, err := os.Stat(page.dir); os.IsNotExist(err) {
+		if err := os.Mkdir(page.dir, 0755); err != nil {
+			log.Fatalf("failed to create output directory: %v", err)
 		}
-		fname := fmt.Sprintf("%s.html", page.name)
+	}
+	fname := fmt.Sprintf("%s.html", page.name)
 
-		name := path.Join(page.dir, fname)
-		f, err := os.Create(name)
-		if err != nil {
-			log.Fatalf("failed to create output file: %v", err)
-		}
+	name := path.Join(page.dir, fname)
+	f, err := os.Create(name)
+	if err != nil {
+		log.Fatalf("failed to create output file: %v", err)
+	}
 
-		err = createPage(page, pages).Render(context.Background(), f)
-		if err != nil {
-			log.Fatalf("failed to write page: %s", err)
-		}
+	err = createPage(page, pages).Render(context.Background(), f)
+	if err != nil {
+		log.Fatalf("failed to write page: %s", err)
 	}
 }
