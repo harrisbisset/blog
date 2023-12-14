@@ -1,0 +1,32 @@
+package main
+
+templ getPostLinks(posts []PostBase) {
+    <div class={ "flex", flexPosts() }>
+        <div id="getPostLinks">
+            @headerCss()
+            for i, post := range posts {
+                
+                <div style="cursor: pointer;" id={ post.ref } hx-get={ post.ref } hx-trigger="click" hx-target="#body">
+                    <h1 style="margin:0;">{ post.name }</h1>
+                    <div><i>{ post.date }</i></div>
+                    if i == 0 {
+                        <div>{ post.summary }</div>
+                    }
+                    <hr style="color: rgba(145, 152, 229, 1);"/>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+
+templ getBlog(post PostBase, pages Pages) {
+    @navComponent(pages)
+    <div id="blog">
+        <div class={ "blogContent", blogContent() }>
+            @getContent(post)
+        </div>
+    </div>
+}
+
+

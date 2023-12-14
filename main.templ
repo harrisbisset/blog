@@ -1,0 +1,54 @@
+package main
+
+templ headerComponent() {
+	<head>
+        <title>Harris' Blog</title>
+        <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/styles/templ.css"></link>
+    </head>
+}
+
+templ bodyComponent(page Page, pages Pages) {
+    switch page.name {
+        case "index":
+            <div id="body" class={ "body", cssBody() }>
+                @navComponent(pages)
+                @getPostLinks(getPostBase())
+            </div>
+        case "about":
+            <div id="body" class={ "body", cssBody() }>
+                @navComponent(pages)
+                @aboutComponent(pages)
+            </div>
+    }
+}
+
+templ navComponent(pages Pages) {
+    @navStyle()
+    <aside class={ "sideNav", asideStyle() }>
+        <ul>
+            for _, page := range pages {
+                <li style="cursor: pointer;" hx-get={ page.ref } hx-trigger="click" hx-target="#trueBody">{ page.name }</li>
+            }
+        </ul>
+    </aside>
+}
+
+templ mainComponent(page Page, pages Pages) {
+    <main>
+        @bodyComponent(page, pages)
+    </main>
+}
+
+templ createPage(page Page, pages Pages) {
+    <html>
+        @headerComponent()
+        <body id="trueBody">
+            @mainComponent(page, pages)
+        </body>
+    </html>
+}
+
+templ notFoundComponent() {
+	<div>404 - Not found</div>
+}
