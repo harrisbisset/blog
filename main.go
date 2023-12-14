@@ -1,4 +1,4 @@
-package main
+package scr
 
 import (
 	"context"
@@ -9,49 +9,41 @@ import (
 	"path"
 
 	"github.com/a-h/templ"
+	. "github.com/blog/shared"
+	tem "github.com/blog/templ"
 )
 
-type Post struct {
-	name    string
-	title   string
-	summary string
-	date    string
-	ref     string
-}
-
-type Pages []Page
-
-type Page struct {
-	name string
-	ref  string
-	dir  string
-}
-
 func getPages() Pages {
-	home := Page{"index", "/", "./index"}
-	about := Page{"about", "/about", "./about"}
+	home := Page{
+		Name: "index",
+		Ref:  "/",
+		Dir:  "./index"}
+	about := Page{
+		Name: "about",
+		Ref:  "/about",
+		Dir:  "./about"}
 
 	return Pages{home, about}
 }
 
 func main() {
 	pages := getPages()
-	posts := getPost()
+	posts := GetPost()
 
 	startUpProcesses(pages[0], pages) // creates static page
 
 	for _, post := range posts {
-		http.Handle(post.ref, templ.Handler(getBlog(post, pages)))
+		http.Handle(post.Ref, templ.Handler(tem.GetBlog(post, pages)))
 	}
 
-	http.Handle("/404", templ.Handler(notFoundComponent(), templ.WithStatus(http.StatusNotFound)))
+	http.Handle("/404", templ.Handler(tem.NotFoundComponent(), templ.WithStatus(http.StatusNotFound)))
 
 	//create handles for pages
 	for i, page := range getPages() {
 		if i == 0 {
-			http.Handle(page.ref, http.FileServer(http.Dir(page.dir)))
+			http.Handle(page.Ref, http.FileServer(http.Dir(page.Dir)))
 		} else {
-			http.Handle(page.ref, templ.Handler(mainComponent(page, pages)))
+			http.Handle(page.Ref, templ.Handler(tem.MainComponent(page, pages)))
 		}
 	}
 
@@ -68,20 +60,20 @@ func wrap(h http.Handler) http.Handler {
 }
 
 func startUpProcesses(page Page, pages Pages) {
-	if _, err := os.Stat(page.dir); os.IsNotExist(err) {
-		if err := os.Mkdir(page.dir, 0755); err != nil {
+	if _, err := os.Stat(page.Dir); os.IsNotExist(err) {
+		if err := os.Mkdir(page.Dir, 0755); err != nil {
 			log.Fatalf("failed to create output directory: %v", err)
 		}
 	}
-	fname := fmt.Sprintf("%s.html", page.name)
+	fname := fmt.Sprintf("%s.html", page.Name)
 
-	name := path.Join(page.dir, fname)
+	name := path.Join(page.Dir, fname)
 	f, err := os.Create(name)
 	if err != nil {
 		log.Fatalf("failed to create output file: %v", err)
 	}
 
-	err = createPage(page, pages).Render(context.Background(), f)
+	err = tem.CreatePage(page, pages).Render(context.Background(), f)
 	if err != nil {
 		log.Fatalf("failed to write page: %s", err)
 	}

@@ -1,4 +1,8 @@
-package main
+package tem
+
+import (
+    . "github.com/blog/shared"
+)
 
 templ headerComponent() {
 	<head>
@@ -9,11 +13,11 @@ templ headerComponent() {
 }
 
 templ bodyComponent(page Page, pages Pages) {
-    switch page.name {
+    switch page.Name {
         case "index":
             <div id="body" class={ "body", cssBody() }>
                 @navComponent(pages)
-                @getPostLinks(getPost())
+                @GetPostLinks(GetPost())
             </div>
         case "about":
             <div id="body" class={ "body", cssBody() }>
@@ -28,27 +32,27 @@ templ navComponent(pages Pages) {
     <aside class={ "sideNav", asideStyle() }>
         <ul>
             for _, page := range pages {
-                <li style="cursor: pointer;" hx-get={ page.ref } hx-trigger="click" hx-target="#trueBody">{ page.name }</li>
+                <li style="cursor: pointer;" hx-get={ page.Ref } hx-trigger="click" hx-target="#trueBody">{ page.Name }</li>
             }
         </ul>
     </aside>
 }
 
-templ mainComponent(page Page, pages Pages) {
+templ MainComponent(page Page, pages Pages) {
     <main>
         @bodyComponent(page, pages)
     </main>
 }
 
-templ createPage(page Page, pages Pages) {
+templ CreatePage(page Page, pages Pages) {
     <html>
         @headerComponent()
         <body id="trueBody">
-            @mainComponent(page, pages)
+            @MainComponent(page, pages)
         </body>
     </html>
 }
 
-templ notFoundComponent() {
+templ NotFoundComponent() {
 	<div>404 - Not found</div>
 }

@@ -1,4 +1,4 @@
-package main
+package shared
 
 import (
 	"bytes"
@@ -15,7 +15,7 @@ import (
 	"github.com/yuin/goldmark/parser"
 )
 
-func getPost() []Post {
+func GetPost() []Post {
 
 	var postBs []Post
 	var ord []int
@@ -48,9 +48,12 @@ func getPost() []Post {
 		ord = append(ord, metaData["order"].(int))
 
 		name := strings.Replace(file.Name(), ".md", "", 1)
-		tPost = append(tPost, Post{metaData["title"].(string), file.Name(),
-			metaData["summary"].(string), metaData["publishedAt"].(string),
-			fmt.Sprintf("/blogPosts/%s", name)})
+		tPost = append(tPost, Post{
+			Name:    metaData["title"].(string),
+			Title:   file.Name(),
+			Summary: metaData["summary"].(string),
+			Date:    metaData["publishedAt"].(string),
+			Ref:     fmt.Sprintf("/blogPosts/%s", name)})
 	}
 
 	//orders array
@@ -61,15 +64,15 @@ func getPost() []Post {
 	return postBs
 }
 
-func Unsafe(html string) templ.Component {
+func unsafe(html string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
 		_, err = io.WriteString(w, html)
 		return
 	})
 }
 
-func getContent(post Post) templ.Component {
-	data, err := os.ReadFile("." + post.ref + ".md")
+func GetContent(post Post) templ.Component {
+	data, err := os.ReadFile("." + post.Ref + ".md")
 	if err != nil {
 		log.Panicf("failed reading data from file: %s", err)
 	}
@@ -92,5 +95,5 @@ func getContent(post Post) templ.Component {
 		log.Fatalf("failed to convert markdown to HTML: %v", err)
 	}
 
-	return Unsafe(buf.String())
+	return unsafe(buf.String())
 }
