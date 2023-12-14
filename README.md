@@ -7,4 +7,3 @@ A blog written in go
 * Move away from <script> tags in templ
 * Move away from inline style in templ
 * Populate about page
-* Orangise files
