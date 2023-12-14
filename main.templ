@@ -13,7 +13,7 @@ templ bodyComponent(page Page, pages Pages) {
         case "index":
             <div id="body" class={ "body", cssBody() }>
                 @navComponent(pages)
-                @getPostLinks(getPostBase())
+                @getPostLinks(getPost())
             </div>
         case "about":
             <div id="body" class={ "body", cssBody() }>

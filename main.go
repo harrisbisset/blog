@@ -11,14 +11,7 @@ import (
 	"github.com/a-h/templ"
 )
 
-type Posts []Post
-
 type Post struct {
-	postBase PostBase
-	content  string
-}
-
-type PostBase struct {
 	name    string
 	title   string
 	summary string
@@ -43,11 +36,11 @@ func getPages() Pages {
 
 func main() {
 	pages := getPages()
-	postBs := getPostBase()
+	posts := getPost()
 
 	startUpProcesses(pages[0], pages) // creates static page
 
-	for _, post := range postBs {
+	for _, post := range posts {
 		http.Handle(post.ref, templ.Handler(getBlog(post, pages)))
 	}
 
@@ -61,8 +54,6 @@ func main() {
 			http.Handle(page.ref, templ.Handler(mainComponent(page, pages)))
 		}
 	}
-	// http.Handle(pages[0].ref, http.FileServer(http.Dir(pages[0].dir)))
-	// http.Handle("/about", templ.Handler(notFoundComponent()))
 
 	fmt.Println("Listening on: 8000")
 	http.ListenAndServe(":8000", wrap(http.DefaultServeMux))
@@ -72,7 +63,7 @@ func wrap(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// before
 		h.ServeHTTP(w, r)
-
+		// after
 	})
 }
 

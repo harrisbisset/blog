@@ -1,6 +1,6 @@
 package main
 
-templ getPostLinks(posts []PostBase) {
+templ getPostLinks(posts []Post) {
     <div class={ "flex", flexPosts() }>
         <div id="getPostLinks">
             @headerCss()
@@ -20,7 +20,7 @@ templ getPostLinks(posts []PostBase) {
 }
 
 
-templ getBlog(post PostBase, pages Pages) {
+templ getBlog(post Post, pages Pages) {
     @navComponent(pages)
     <div id="blog">
         <div class={ "blogContent", blogContent() }>

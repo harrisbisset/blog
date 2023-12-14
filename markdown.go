@@ -15,11 +15,11 @@ import (
 	"github.com/yuin/goldmark/parser"
 )
 
-func getPostBase() []PostBase {
+func getPost() []Post {
 
-	var postBs []PostBase
+	var postBs []Post
 	var ord []int
-	var tPost []PostBase
+	var tPost []Post
 
 	markdown := goldmark.New(
 		goldmark.WithExtensions(
@@ -48,7 +48,7 @@ func getPostBase() []PostBase {
 		ord = append(ord, metaData["order"].(int))
 
 		name := strings.Replace(file.Name(), ".md", "", 1)
-		tPost = append(tPost, PostBase{metaData["title"].(string), file.Name(),
+		tPost = append(tPost, Post{metaData["title"].(string), file.Name(),
 			metaData["summary"].(string), metaData["publishedAt"].(string),
 			fmt.Sprintf("/blogPosts/%s", name)})
 	}
@@ -68,12 +68,13 @@ func Unsafe(html string) templ.Component {
 	})
 }
 
-func getContent(post PostBase) templ.Component {
+func getContent(post Post) templ.Component {
 	data, err := os.ReadFile("." + post.ref + ".md")
 	if err != nil {
 		log.Panicf("failed reading data from file: %s", err)
 	}
 
+	// removes metadata from content
 	c := 0
 	index := 0
 	for i, j := range data {
