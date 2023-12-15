@@ -16,7 +16,6 @@ import (
 )
 
 func GetPost() []Post {
-
 	var postBs []Post
 	var ord []int
 	var tPost []Post
@@ -44,6 +43,9 @@ func GetPost() []Post {
 			panic(err)
 		}
 
+		// need to handle if file in blogPosts that isn't markdown
+		// fails on {interface}.(type)
+
 		metaData := meta.Get(context)
 		ord = append(ord, metaData["order"].(int))
 
@@ -56,7 +58,7 @@ func GetPost() []Post {
 			Ref:     fmt.Sprintf("/blogPosts/%s", name)})
 	}
 
-	//orders array
+	// orders array
 	for i := len(ord) - 1; i >= 0; i-- {
 		postBs = append(postBs, tPost[i])
 	}

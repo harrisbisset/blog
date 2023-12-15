@@ -9,7 +9,7 @@ css cssBody() {
     left: 20%;
     position: absolute;
     display: flex;
-    width: 100%;
+    width: 60%;
 }
 
 css flexPosts() {
@@ -34,36 +34,53 @@ templ headerCss() {
 
 templ navStyle() {
     <style type="text/css">
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            position: sticky;
-            top: 20px;
-        }
-
-        li {
-            display: block;
-            color: #000;
-            padding: 8px 16px;
-            text-decoration: none;
-            cursor: pointer;
-            text-decoration: underline 0.15em rgba(146, 118, 132, 0.3);
-            transition: text-decoration-color 300ms;
-            font-size: 24px;
-        }
-
-        li.active {
+        .sideNav li.active {
             background-color: #04AA6D;
             color: white;
         }
 
-        li:hover {
+        .sideNav li:hover {
             text-decoration-color: rgba(145, 152, 229, 1);
         }
     </style>
 }
 
+css navUlStyle() {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    top: 20px;
+}
+
+css navListItem() {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    text-decoration: underline 0.15em rgba(146, 118, 132, 0.3);
+    transition: text-decoration-color 300ms;
+    font-size: 24px;
+}
+
 css blogContent() {
-    width: 40%;
+    width: 70%;
+    font-family: "Open Sans";
+}
+
+templ blogStyle() {
+    <style>
+        h1 {
+            color: #d164a9;
+            margin-bottom: 2;
+        }
+        blockquote {
+            background-color: rgba(146, 118, 132, 0.3);
+            margin: 0;
+        }
+        blockquote p {
+            margin: 0;
+        }
+    </style>
 }

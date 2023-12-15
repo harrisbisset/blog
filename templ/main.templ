@@ -8,6 +8,7 @@ templ headerComponent() {
 	<head>
         <title>Harris' Blog</title>
         <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet"/>
         <link rel="stylesheet" href="/styles/templ.css"></link>
     </head>
 }
@@ -30,9 +31,9 @@ templ bodyComponent(page Page, pages Pages) {
 templ navComponent(pages Pages) {
     @navStyle()
     <aside class={ "sideNav", asideStyle() }>
-        <ul>
+        <ul class={ "navUl", navUlStyle() }>
             for _, page := range pages {
-                <li style="cursor: pointer;" hx-get={ page.Ref } hx-trigger="click" hx-target="#trueBody">{ page.Name }</li>
+                <li class={ "navLi", navListItem() }style="cursor: pointer;" hx-get={ page.Ref } hx-trigger="click" hx-target="#trueBody">{ page.Name }</li>
             }
         </ul>
     </aside>

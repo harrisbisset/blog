@@ -1,4 +1,4 @@
-package scr
+package main
 
 import (
 	"context"
