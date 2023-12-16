@@ -20,8 +20,8 @@ WORKDIR /src
 #     --mount=type=bind,source=go.mod,target=go.mod \
 #     go mod download -x
 RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build \
-    --mount=type=bind,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,source=go.sum,target=go.sum \
-    --mount=type=bind,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,source=go.mod,target=go.mod \
+    --mount=type=bind,source=go.sum,target=go.sum \
+    --mount=type=bind,source=go.mod,target=go.mod \
     go mod download -x
     
 
