@@ -24,10 +24,10 @@ RUN --mount=type=cache,id=s/<service id>-/root/cache/go-build,target=/root/.cach
 #     --mount=type=bind,source=go.sum,target=go.sum \
 #     --mount=type=bind,source=go.mod,target=go.mod \
 #     go mod download -x
-RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build \
-    --mount=type=bind,source=go.sum,target=go.sum \
-    --mount=type=bind,source=go.mod,target=go.mod \
-    go mod download -x
+# RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build \
+#     --mount=type=bind,source=go.sum,target=go.sum \
+#     --mount=type=bind,source=go.mod,target=go.mod \
+#     go mod download -x
     
 
 # This is the architecture you’re building for, which is passed in by the builder.
