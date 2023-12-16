@@ -14,7 +14,7 @@ WORKDIR /src
 # Leverage a cache mount to /go/pkg/mod/ to speed up subsequent builds.
 # Leverage bind mounts to go.sum and go.mod to avoid having to copy them into
 # the container.
-RUN --mount=type=cache,id=s/<service id>-/root/cache/go-build,target=/root/.cache/go-build go mod download
+RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build go mod download
 # RUN --mount=type=cache,target=/go/pkg/mod/ \
 # RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build \
 #     --mount=type=bind,source=go.sum,target=go.sum \
