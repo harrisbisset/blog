@@ -19,7 +19,7 @@ WORKDIR /src
 #     --mount=type=bind,source=go.sum,target=go.sum \
 #     --mount=type=bind,source=go.mod,target=go.mod \
 #     go mod download -x
-RUN --mount=type=cache,id=s/<service id>-/root/cache/go-build,target=/root/.cache/go-build go mod download
+RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build go mod download
     
 
 # This is the architecture you’re building for, which is passed in by the builder.
@@ -33,7 +33,7 @@ ARG TARGETARCH
 # RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build \
 #     --mount=type=bind,target=. \
 #     CGO_ENABLED=0 GOARCH=$TARGETARCH go build -o /bin/server ./
-RUN --mount=type=cache,id=s/<service id>-/root/cache/go-build,target=/root/.cache/go-build CGO_ENABLED=0 GOARCH=$TARGETARCH go build -o /bin/server ./
+RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build CGO_ENABLED=0 GOARCH=$TARGETARCH go build -o /bin/server ./
 
 ################################################################################
 # Create a new stage for running the application that contains the minimal
