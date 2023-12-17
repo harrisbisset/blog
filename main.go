@@ -28,6 +28,15 @@ func getPages() Pages {
 }
 
 func main() {
+
+	addr := os.Getenv("ADDR")
+
+	//if it's blank, default to ":80", which means
+	//listen port 80 for requests addressed to any host
+	if len(addr) == 0 {
+		addr = ":80"
+	}
+
 	pages := getPages()
 	posts := GetPost()
 
@@ -49,7 +58,7 @@ func main() {
 	}
 
 	fmt.Println("Listening on: 8000")
-	http.ListenAndServe(":80", wrap(http.DefaultServeMux))
+	log.Fatal(http.ListenAndServe(addr, wrap(http.DefaultServeMux)))
 }
 
 func wrap(h http.Handler) http.Handler {
