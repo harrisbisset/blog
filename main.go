@@ -47,6 +47,7 @@ func main() {
 
 		// Here we write "HELLO" to the ResponseWriter
 		fmt.Fprint(writer, "HELLO")
+		log.Printf("HELLO")
 	})
 
 	pages := getPages()
