@@ -28,7 +28,6 @@ WORKDIR /src
 #     --mount=type=bind,source=go.sum,target=go.sum \
 #     --mount=type=bind,source=go.mod,target=go.mod \
 #     go mod download -x
-    
 
 # This is the architecture you’re building for, which is passed in by the builder.
 # Placing it here allows the previous steps to be cached across architectures.
@@ -44,7 +43,7 @@ ARG TARGETARCH
 # RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build go build .
     # --mount=type=bind,target=. \
     # CGO_ENABLED=0 GOARCH=$TARGETARCH go build -o /bin/server ./
-RUN go mod download
+# RUN go mod download
 
 ################################################################################
 # Create a new stage for running the application that contains the minimal
@@ -64,16 +63,21 @@ FROM alpine:latest AS final
 
 # RUN --mount=type=cache,id=s/<service id>-/root/cache/go-build,target=/root/.cache/go-build go mod download
 
-RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build \
-    apk --update add \
-        ca-certificates \
-        tzdata \
-        && \
-        update-ca-certificates
+# RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build \
+#     apk --update add \
+#         ca-certificates \
+#         tzdata \
+#         && \
+#         update-ca-certificates
 
 RUN mkdir -p home/index/
 WORKDIR /home/
-COPY /blogPosts /home/blogPosts/
+COPY go.mod go.sum ./
+RUN go mod download
+RUN --mount=type=cache,id=s/957287b0-89b6-4e31-9e44-84402206d00b-/root/cache/go-build,target=/root/.cache/go-build go build
+RUN cd /home
+# RUN go build
+# COPY /blogPosts /home/blogPosts/
 
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
