@@ -113,7 +113,8 @@ RUN go mod download
 
 COPY ./blogPosts/ ./blogPosts/
 COPY *.go ./
-RUN go get blog
+RUN go get blog/shared
+RUN go get blog/templ
 RUN go install
 RUN ls *
 
