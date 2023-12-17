@@ -39,6 +39,16 @@ func main() {
 
 	mux := http.NewServeMux()
 
+	mux.HandleFunc("/", func(writer http.ResponseWriter, r *http.Request) {
+		// Send a 200 response. This is technically
+		// superfluous as it implicitly sends a 200
+		// when we write any response to the writer
+		writer.WriteHeader(200)
+
+		// Here we write "HELLO" to the ResponseWriter
+		fmt.Fprint(writer, "HELLO")
+	})
+
 	pages := getPages()
 	posts := GetPost()
 
