@@ -30,19 +30,11 @@ func getPages() Pages {
 func main() {
 
 	port := os.Getenv("PORT")
-
-	//if it's blank, default to ":80", which means
-	//listen port 80 for requests addressed to any host
 	if len(port) == 0 {
 		port = "3000"
 	}
 
 	mux := http.NewServeMux()
-	// mux.HandleFunc("/", func(writer http.ResponseWriter, r *http.Request) {
-	// 	writer.WriteHeader(200)
-	// 	fmt.Fprint(writer, "HELLO")
-	// 	log.Printf("HELLO")
-	// })
 
 	pages := getPages()
 	posts := GetPost()

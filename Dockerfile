@@ -106,6 +106,7 @@ FROM golang:1.21.5 AS build
 
 WORKDIR /blog
 
+# TODO: clean up
 COPY go.mod go.sum ./
 COPY ./shared/ ./shared/
 COPY ./tem/ ./tem/
@@ -116,7 +117,6 @@ COPY *.go ./
 RUN go get ./shared/
 RUN go get ./tem/
 RUN go install
-RUN ls *
 
 
 RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
