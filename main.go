@@ -34,7 +34,7 @@ func main() {
 	//if it's blank, default to ":80", which means
 	//listen port 80 for requests addressed to any host
 	if len(addr) == 0 {
-		addr = ":8080"
+		addr = ":80"
 	}
 
 	mux := http.NewServeMux()
