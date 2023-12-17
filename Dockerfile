@@ -108,13 +108,13 @@ WORKDIR /blog
 
 COPY go.mod go.sum ./
 COPY ./shared/ ./shared/
-COPY ./templ/ ./templ/
+COPY ./tem/ ./tem/
 RUN go mod download
 
 COPY ./blogPosts/ ./blogPosts/
 COPY *.go ./
 RUN go get ./shared/
-RUN go get tem ./templ/
+RUN go get ./tem/
 RUN go install
 RUN ls *
 

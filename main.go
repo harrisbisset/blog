@@ -9,7 +9,7 @@ import (
 	"path"
 
 	. "blog/shared"
-	tem "blog/templ"
+	tem "blog/tem"
 
 	"github.com/a-h/templ"
 )
