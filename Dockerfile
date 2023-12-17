@@ -111,9 +111,11 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY ./blogPosts/ ./blogPosts/
-RUN ls -la ./blogPosts/*
 COPY *.go ./
-COPY . ./
+COPY ./shared/*.go ./shared/
+COPY ./templ/*.go ./templ/
+RUN ls *
+
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
 
