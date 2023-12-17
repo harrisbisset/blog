@@ -110,12 +110,15 @@ COPY go.mod go.sum ./
 
 RUN go mod download
 
+COPY ./blogPosts/ ./blogPosts/
+RUN ls -la ./blogPosts/*
 COPY *.go ./
 COPY . ./
 
-COPY . ./blogPosts/
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o main
+
+
 
 FROM alpine:latest as final
 
