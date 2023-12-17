@@ -38,8 +38,6 @@ func main() {
 	}
 
 	mux := http.NewServeMux()
-	rh := http.RedirectHandler("http://example.org", 307)
-	mux.Handle("/foo", rh)
 	// mux.HandleFunc("/", func(writer http.ResponseWriter, r *http.Request) {
 	// 	writer.WriteHeader(200)
 	// 	fmt.Fprint(writer, "HELLO")
@@ -58,13 +56,13 @@ func main() {
 	mux.Handle("/404", templ.Handler(tem.NotFoundComponent(), templ.WithStatus(http.StatusNotFound)))
 
 	//create handles for pages
-	// for i, page := range getPages() {
-	// 	if i == 0 {
-	// 		mux.Handle(page.Ref, http.FileServer(http.Dir(page.Dir)))
-	// 	} else {
-	// 		mux.Handle(page.Ref, templ.Handler(tem.MainComponent(page, pages)))
-	// 	}
-	// }
+	for i, page := range getPages() {
+		if i == 0 {
+			mux.Handle(page.Ref, http.FileServer(http.Dir(page.Dir)))
+		} else {
+			mux.Handle(page.Ref, templ.Handler(tem.MainComponent(page, pages)))
+		}
+	}
 
 	log.Printf("server is listening at %s...", port)
 	err := http.ListenAndServe("0.0.0.0:"+port, wrap(mux))
