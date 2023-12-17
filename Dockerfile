@@ -110,9 +110,8 @@ COPY go.mod go.sum ./
 
 RUN go mod download
 
-COPY *.go /templ
-COPY *.go /shared
 COPY *.go ./
+COPY . ./
 
 RUN go build -o main
 
