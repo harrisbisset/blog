@@ -33,7 +33,6 @@ func GetPost() []Post {
 	}
 
 	for _, file := range files {
-		fmt.Println(file.Name())
 		data, err := os.ReadFile(fmt.Sprintf("blogPosts/%s", file.Name()))
 		if err != nil {
 			log.Panicf("failed reading data from file: %s", err)

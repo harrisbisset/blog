@@ -126,6 +126,7 @@ FROM alpine:latest as final
 
 WORKDIR /blog
 
+RUN mkdir /blog/index
 COPY --from=build /blog/main ./
 COPY --from=build /blog/blogPosts ./blogPosts/
 

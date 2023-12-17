@@ -28,17 +28,6 @@ func getPages() Pages {
 }
 
 func main() {
-
-	entries, err := os.ReadDir("./")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, e := range entries {
-		fmt.Println(e.Name())
-		fmt.Println("file")
-	}
-
 	pages := getPages()
 	posts := GetPost()
 
@@ -78,6 +67,7 @@ func startUpProcesses(page Page, pages Pages) {
 		}
 	}
 	fname := fmt.Sprintf("%s.html", page.Name)
+	fmt.Println(page.Name)
 
 	name := path.Join(page.Dir, fname)
 	f, err := os.Create(name)
