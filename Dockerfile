@@ -114,7 +114,7 @@ RUN go mod download
 COPY ./blogPosts/ ./blogPosts/
 COPY *.go ./
 RUN go get ./shared/
-RUN go get ./templ/
+RUN go get tem ./templ/
 RUN go install
 RUN ls *
 
