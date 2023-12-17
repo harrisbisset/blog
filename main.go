@@ -8,9 +8,10 @@ import (
 	"os"
 	"path"
 
+	. "blog/shared"
+	tem "blog/templ"
+
 	"github.com/a-h/templ"
-	. "github.com/blog/shared"
-	tem "github.com/blog/templ"
 )
 
 func getPages() Pages {

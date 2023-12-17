@@ -104,20 +104,22 @@
 
 FROM golang:1.21.5 AS build
 
-WORKDIR /src
+WORKDIR /blog
 
 COPY go.mod go.sum ./
 
 RUN go mod download
 
-COPY . ./
-#
+COPY *.go /templ
+COPY *.go /shared
+COPY *.go ./
+
 RUN go build -o main
 
 FROM alpine:latest as final
 
-WORKDIR /src
+WORKDIR /blog
 
-COPY --from=build /src/main ./
+COPY --from=build /blog/main ./
 
-ENTRYPOINT ["/src/main"]
+ENTRYPOINT ["/blog/main"]
