@@ -29,12 +29,12 @@ func getPages() Pages {
 
 func main() {
 
-	addr := os.Getenv("ADDR")
+	port := os.Getenv("PORT")
 
 	//if it's blank, default to ":80", which means
 	//listen port 80 for requests addressed to any host
-	if len(addr) == 0 {
-		addr = "https://blog-production-567b.up.railway.app:80"
+	if len(port) == 0 {
+		port = "3000"
 	}
 
 	mux := http.NewServeMux()
@@ -66,8 +66,8 @@ func main() {
 	// 	}
 	// }
 
-	log.Printf("server is listening at %s...", addr)
-	err := http.ListenAndServe(addr, wrap(mux))
+	log.Printf("server is listening at %s...", port)
+	err := http.ListenAndServe("0.0.0.0:"+port, wrap(mux))
 	fmt.Println(err)
 }
 
