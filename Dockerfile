@@ -131,3 +131,4 @@ COPY --from=build /blog/main ./
 COPY --from=build /blog/blogPosts ./blogPosts/
 
 ENTRYPOINT ["/blog/main"]
+EXPOSE 80
