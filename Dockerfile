@@ -112,8 +112,8 @@ RUN go mod download
 
 COPY ./blogPosts/ ./blogPosts/
 COPY *.go ./
-COPY ./shared/*.go ./shared/
-COPY ./templ/*.go ./templ/
+COPY ./shared/ ./shared/
+COPY ./templ/ ./templ/
 RUN ls *
 
 
