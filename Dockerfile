@@ -113,11 +113,12 @@ RUN go mod download
 
 COPY ./blogPosts/ ./blogPosts/
 COPY *.go ./
-
+RUN go get blog
+RUN go install
 RUN ls *
 
 
-RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux go build -o main
+RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
 
 
 FROM alpine:latest as final
