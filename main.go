@@ -37,28 +37,30 @@ func main() {
 		addr = ":80"
 	}
 
+	mux := http.NewServeMux()
+
 	pages := getPages()
 	posts := GetPost()
 
 	startUpProcesses(pages[0], pages) // creates static page
 
 	for _, post := range posts {
-		http.Handle(post.Ref, templ.Handler(tem.GetBlog(post, pages)))
+		mux.Handle(post.Ref, templ.Handler(tem.GetBlog(post, pages)))
 	}
 
-	http.Handle("/404", templ.Handler(tem.NotFoundComponent(), templ.WithStatus(http.StatusNotFound)))
+	mux.Handle("/404", templ.Handler(tem.NotFoundComponent(), templ.WithStatus(http.StatusNotFound)))
 
 	//create handles for pages
 	for i, page := range getPages() {
 		if i == 0 {
-			http.Handle(page.Ref, http.FileServer(http.Dir(page.Dir)))
+			mux.Handle(page.Ref, http.FileServer(http.Dir(page.Dir)))
 		} else {
-			http.Handle(page.Ref, templ.Handler(tem.MainComponent(page, pages)))
+			mux.Handle(page.Ref, templ.Handler(tem.MainComponent(page, pages)))
 		}
 	}
 
-	fmt.Println("Listening on: 8000")
-	log.Fatal(http.ListenAndServe(addr, wrap(http.DefaultServeMux)))
+	log.Printf("server is listening at %s...", addr)
+	log.Fatal(http.ListenAndServe(addr, wrap(mux)))
 }
 
 func wrap(h http.Handler) http.Handler {
