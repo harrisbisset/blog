@@ -113,12 +113,15 @@ RUN go mod download
 COPY *.go ./
 COPY . ./
 
-RUN go build -o main
+COPY . ./blogPosts/
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o main
 
 FROM alpine:latest as final
 
 WORKDIR /blog
 
 COPY --from=build /blog/main ./
+COPY --from=build /blog/main ./blogPosts/
 
 ENTRYPOINT ["/blog/main"]
