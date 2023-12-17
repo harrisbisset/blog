@@ -125,6 +125,6 @@ FROM alpine:latest as final
 WORKDIR /blog
 
 COPY --from=build /blog/main ./
-COPY --from=build /blog/main ./blogPosts/
+COPY --from=build /blog/blogPosts ./blogPosts/
 
 ENTRYPOINT ["/blog/main"]

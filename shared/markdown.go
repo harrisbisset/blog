@@ -26,7 +26,7 @@ func GetPost() []Post {
 		),
 	)
 
-	files, err := os.ReadDir("././blogPosts")
+	files, err := os.ReadDir("blogPosts/")
 	if err != nil {
 		fmt.Println("no files")
 		log.Fatal(err)
