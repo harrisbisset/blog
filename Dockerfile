@@ -117,7 +117,7 @@ COPY ./templ/ ./templ/
 RUN ls *
 
 
-RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
+RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux go build -o main
 
 
 FROM alpine:latest as final
