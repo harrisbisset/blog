@@ -52,7 +52,7 @@ func main() {
 	pages := getPages()
 	posts := GetPost()
 
-	//startUpProcesses(pages[0], pages) // creates static page
+	startUpProcesses(pages[0], pages) // creates static page
 
 	for _, post := range posts {
 		mux.Handle(post.Ref, templ.Handler(tem.GetBlog(post, pages)))
@@ -61,13 +61,13 @@ func main() {
 	mux.Handle("/404", templ.Handler(tem.NotFoundComponent(), templ.WithStatus(http.StatusNotFound)))
 
 	//create handles for pages
-	for i, page := range getPages() {
-		if i == 0 {
-			mux.Handle(page.Ref, http.FileServer(http.Dir(page.Dir)))
-		} else {
-			mux.Handle(page.Ref, templ.Handler(tem.MainComponent(page, pages)))
-		}
-	}
+	// for i, page := range getPages() {
+	// 	if i == 0 {
+	// 		mux.Handle(page.Ref, http.FileServer(http.Dir(page.Dir)))
+	// 	} else {
+	// 		mux.Handle(page.Ref, templ.Handler(tem.MainComponent(page, pages)))
+	// 	}
+	// }
 
 	log.Printf("server is listening at %s...", addr)
 	err := http.ListenAndServe(addr, wrap(mux))
