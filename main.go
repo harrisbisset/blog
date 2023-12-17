@@ -60,7 +60,8 @@ func main() {
 	}
 
 	log.Printf("server is listening at %s...", addr)
-	log.Fatal(http.ListenAndServe(addr, wrap(mux)))
+	err := http.ListenAndServe(addr, wrap(mux))
+	fmt.Println(err)
 }
 
 func wrap(h http.Handler) http.Handler {
