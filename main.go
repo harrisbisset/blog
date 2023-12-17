@@ -60,7 +60,7 @@ func main() {
 	}
 
 	fmt.Println("Listening on: 8000")
-	http.ListenAndServe(":8000", wrap(http.DefaultServeMux))
+	http.ListenAndServe("10.0.0.1:80", wrap(http.DefaultServeMux))
 }
 
 func wrap(h http.Handler) http.Handler {
