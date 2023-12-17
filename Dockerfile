@@ -107,13 +107,13 @@ FROM golang:1.21.5 AS build
 WORKDIR /blog
 
 COPY go.mod go.sum ./
-
+COPY ./shared/ ./shared/
+COPY ./templ/ ./templ/
 RUN go mod download
 
 COPY ./blogPosts/ ./blogPosts/
 COPY *.go ./
-COPY ./shared/ ./shared/
-COPY ./templ/ ./templ/
+
 RUN ls *
 
 
