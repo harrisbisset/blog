@@ -52,7 +52,7 @@ func main() {
 	pages := getPages()
 	posts := GetPost()
 
-	startUpProcesses(pages[0], pages) // creates static page
+	//startUpProcesses(pages[0], pages) // creates static page
 
 	for _, post := range posts {
 		mux.Handle(post.Ref, templ.Handler(tem.GetBlog(post, pages)))
