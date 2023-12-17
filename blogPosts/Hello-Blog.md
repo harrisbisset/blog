@@ -33,4 +33,4 @@ I'm not saying no to learning, but I'm not particularly excited about these thin
 On a serious note, I plan on writing some C# and PHP. Like small projects in PHP + blazingly hot technologies, like Rust.
 
 
-Of course, I still want to find reasons to pipe juicy goodness into my stack. Haskell, Ocaml, Elixir, another language that's incredibly narrow... 😩 it's a hard life.
+Of course, I still want to find reasons to pipe juicy goodness into my stack. Haskell, Ocaml, Elixir, or another language that's incredibly narrow in the job market... 😩 it's a hard life.
