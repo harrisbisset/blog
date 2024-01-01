@@ -18,7 +18,7 @@ RUN ls -la ./model/*
 RUN ls -la ./view/*
 
 RUN go mod download
-RUN go get ./handler
+RUN go get ./handler/
 RUN go get ./view/*
 RUN go get ./model/*
 RUN go install
