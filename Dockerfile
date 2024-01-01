@@ -5,10 +5,10 @@ FROM golang:1.21.5 AS build
 WORKDIR /blog
 
 # TODO: clean up
-COPY go.mod go.sum ./
-COPY ./shared/ ./shared/
-COPY ./tem/ ./tem/
-RUN go mod download
+# COPY go.mod go.sum ./
+# COPY ./shared/ ./shared/
+# COPY ./tem/ ./tem/
+# RUN go mod download
 
 COPY ./blogPosts/ ./blogPosts/
 COPY *.go ./
