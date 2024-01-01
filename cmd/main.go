@@ -36,7 +36,7 @@ func main() {
 		app.GET(fmt.Sprintf("/blog/%s", post.Name[:len(post.Name)-3]), handler.PostHandler{Post: post}.HandlePostShow)
 	}
 
-	log.Printf("server is listening at %s...", port)
+	log.Printf("server is listening at %s....", port)
 	if err := s.ListenAndServe(); err != http.ErrServerClosed {
 		log.Fatal(err)
 	}

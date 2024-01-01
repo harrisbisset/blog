@@ -34,6 +34,7 @@ RUN mkdir /blog/index
 COPY --from=build /blog/main ./
 COPY --from=build /blog/posts/MD/ ./posts/MD/
 COPY --from=build /blog/dist/ ./dist/
+COPY --from=build /blog/public/ ./public/
 
 ENTRYPOINT ["/blog/main"]
 EXPOSE 80
