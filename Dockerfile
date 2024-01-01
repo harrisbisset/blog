@@ -6,8 +6,8 @@ WORKDIR /blog
 
 # TODO: clean up
 # COPY go.mod go.sum ./
-# COPY ./shared/ ./shared/
-# COPY ./tem/ ./tem/
+COPY ./shared/ ./shared/
+COPY ./tem/ ./tem/
 # RUN go mod download
 
 COPY ./blogPosts/ ./blogPosts/
