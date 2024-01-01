@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navlistitem {
+    cursor: pointer;
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-decoration: underline 0.15em rgba(146, 118, 132, 0.3);
+    transition: text-decoration-color 300ms;
+    font-size: 24px;
+}
+
+.navlistitem:hover {
+    text-decoration-color: #9198e5;
+}

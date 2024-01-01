@@ -1,0 +1,32 @@
+package layout
+
+templ Base() {
+    <!DOCTYPE html>
+    <html class="dark">
+        <head>
+            <title>VTS</title>
+            <link rel="stylesheet" href="/dist/tailwind.css"/>
+            <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"/>
+            <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet"/>
+        </head>
+        <body id="trueBody" class="flex flex-col bg-white dark:bg-slate-800 h-full">
+            <main class="overflow-auto">
+                <div id="body" class="pl-[20%] flex flex-row w-[80%]">
+                    @navComponent()
+                    { children... }
+                </div>
+            </main>
+            <footer class="h-40">
+            </footer>
+        </body>
+    </html>
+}
+
+templ navComponent() {
+    <aside class="sticky left-[100%]">
+        <ul class="list-none m-0 p-0 sticky top-[20px]">
+            <li class="navlistitem dark:text-white" hx-get="/blog" hx-trigger="click" hx-target="#trueBody">blog</li>
+            <li class="navlistitem dark:text-white" hx-get="/about" hx-trigger="click" hx-target="#trueBody">about</li>
+        </ul>
+    </aside>
+}

@@ -4,18 +4,24 @@ FROM golang:1.21.5 AS build
 
 WORKDIR /blog
 
-# TODO: clean up
-COPY go.mod go.sum ./
-COPY ./shared/ ./shared/
-COPY ./tem/ ./tem/
+
+COPY go.mod go.sum tailwind.config.js ./
+COPY ./cmd/ ./
+COPY ./dist/ ./dist/
+COPY ./handler/ ./handler/
+COPY ./model/ ./model/
+COPY ./posts/MD/ ./posts/MD/
+COPY ./public/ ./public/
+COPY ./view/ ./view/
+
+RUN ls -la ./model/*
+RUN ls -la ./view/*
+
 RUN go mod download
-
-COPY ./blogPosts/ ./blogPosts/
-COPY *.go ./
-RUN go get ./shared/
-RUN go get ./tem/
+RUN go get ./handler
+RUN go get ./view/*
+RUN go get ./model/*
 RUN go install
-
 
 RUN GO111MODULE=on CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main
 
@@ -26,7 +32,8 @@ WORKDIR /blog
 
 RUN mkdir /blog/index
 COPY --from=build /blog/main ./
-COPY --from=build /blog/blogPosts ./blogPosts/
+COPY --from=build /blog/posts/MD/ ./posts/MD/
+COPY --from=build /blog/dist/ ./dist/
 
 ENTRYPOINT ["/blog/main"]
 EXPOSE 80

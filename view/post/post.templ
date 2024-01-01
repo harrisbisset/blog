@@ -1,0 +1,20 @@
+package post
+
+import (
+    . "github.com/blog/model/shared"
+    "github.com/blog/view/layout"
+    "github.com/blog/view/styles"
+)
+
+templ PostBase(p Post) {
+    @layout.Base() {
+        <div id="blog">
+            <div class="w-[85%]">
+                <div id="content">
+                    @styles.BlogStyle()
+                    @GetContent(p)
+                </div>
+            </div>
+        </div>
+    }
+}
