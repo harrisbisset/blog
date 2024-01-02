@@ -21,7 +21,7 @@ func main() {
 	}
 
 	s := http.Server{
-		Addr:    "0:0:0:0" + port,
+		Addr:    "0:0:0:0:" + port,
 		Handler: app,
 	}
 
