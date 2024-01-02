@@ -12,6 +12,8 @@ module.exports = {
         colors: {
           pinky: "#2b222a",
           purpur: "#d164a9",
+          bluey: "#4477CE",
+          lightBluey: "#8CABFF",
         },
       },
     },

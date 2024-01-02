@@ -16,3 +16,14 @@
 .navlistitem:hover {
     text-decoration-color: #9198e5;
 }
+
+@media (prefers-color-scheme: dark) {
+    .navlistitem {
+        text-decoration: underline 0.15em #8CABFF;
+        color: white;
+    }
+
+    .navlistitem:hover {
+        text-decoration-color: #35155D;
+    }
+}

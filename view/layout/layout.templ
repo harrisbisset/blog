@@ -16,7 +16,7 @@ templ Base() {
                     { children... }
                 </div>
             </main>
-            <footer class="h-40">
+            <footer class="h-[400px]">
             </footer>
         </body>
     </html>
@@ -25,8 +25,8 @@ templ Base() {
 templ navComponent() {
     <aside class="sticky left-[100%]">
         <ul class="list-none m-0 p-0 sticky top-[20px]">
-            <li class="navlistitem dark:text-white" hx-get="/blog" hx-trigger="click" hx-target="#trueBody">blog</li>
-            <li class="navlistitem dark:text-white" hx-get="/about" hx-trigger="click" hx-target="#trueBody">about</li>
+            <li class="navlistitem" hx-get="/blog" hx-trigger="click" hx-target="#trueBody">blog</li>
+            <li class="navlistitem" hx-get="/about" hx-trigger="click" hx-target="#trueBody">about</li>
         </ul>
     </aside>
 }

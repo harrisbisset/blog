@@ -44,7 +44,7 @@ func Base() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></main><footer class=\"h-40\"></footer></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></main><footer class=\"h-[400px]\"></footer></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -68,7 +68,7 @@ func navComponent() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<aside class=\"sticky left-[100%]\"><ul class=\"list-none m-0 p-0 sticky top-[20px]\"><li class=\"navlistitem dark:text-white\" hx-get=\"/blog\" hx-trigger=\"click\" hx-target=\"#trueBody\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<aside class=\"sticky left-[100%]\"><ul class=\"list-none m-0 p-0 sticky top-[20px]\"><li class=\"navlistitem\" hx-get=\"/blog\" hx-trigger=\"click\" hx-target=\"#trueBody\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -77,7 +77,7 @@ func navComponent() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</li><li class=\"navlistitem dark:text-white\" hx-get=\"/about\" hx-trigger=\"click\" hx-target=\"#trueBody\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</li><li class=\"navlistitem\" hx-get=\"/about\" hx-trigger=\"click\" hx-target=\"#trueBody\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

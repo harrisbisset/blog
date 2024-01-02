@@ -56,8 +56,15 @@ func BlogStyle() templ.Component {
             padding: 0px;
         }
 
+        p {
+            padding: 8px;
+        }
+
         p, li {
             padding: 5px;
+            color: #0f172a;
+            line-height: 1.4;
+            text-align: left;
         }
 
         ul, ol {
@@ -72,12 +79,30 @@ func BlogStyle() templ.Component {
             list-style-type: decimal;
         }
 
+        hr {
+            border: 1px #1e293b;
+        }
+
         @media (prefers-color-scheme: dark) {
+
+            h2 {
+                color: #4477CE;
+            }
+
+            p {
+                padding: 8px;
+            }
+
             p, li {
                 color: white;
             }
+
             blockquote {
                 background-color: #0f172a;
+            }
+
+            hr {
+                background-color: black;
             }
         }
     `
