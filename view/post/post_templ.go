@@ -35,7 +35,7 @@ func PostBase(p Post) templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"blog\"><div class=\"w-[85%]\"><div id=\"content\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"blog\" class=\"ph:float-none\"><div class=\"sm:w-[85%] ph:w-full ph:pl-[15px] ph:pr-[15px] sm:pl-0\"><div id=\"content\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

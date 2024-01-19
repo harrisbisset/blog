@@ -4,15 +4,17 @@ templ Base() {
     <!DOCTYPE html>
     <html>
         <head>
-            <title>VTS</title>
+            <title>Harris Bisset</title>
             <link rel="stylesheet" href="/dist/tailwind.css"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"/>
             <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet"/>
+            <script src="/dist/events.js"/>
         </head>
-        <body id="trueBody" class="flex flex-col bg-white dark:bg-slate-800 h-full">
+        <body id="trueBody" class="flex flex-col light:bg-white dark:bg-slate h-full">
             <div id="content">
                 <main class="overflow-auto">
-                    <div id="body" class="pl-[20%] flex flex-row w-[80%]">
+                    <div id="body" class="xl:pl-[15%] sm:pl-[10%] ph:pl-[4px] ph:ml-[4px] sm:flex sm:flex-row sm:w-[80%]">
                         @navComponent()
                         { children... }
                     </div>
@@ -25,7 +27,7 @@ templ Base() {
 }
 
 templ navComponent() {
-    <aside class="sticky left-[100%]">
+    <aside class="sticky left-[100%] h-fit float-right">
         <ul class="list-none m-0 p-0 sticky top-[20px]">
             <li class="navlistitem" hx-get="/blog" hx-trigger="click" hx-target="#trueBody">blog</li>
             <li class="navlistitem" hx-get="/about" hx-trigger="click" hx-target="#trueBody">about</li>

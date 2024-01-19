@@ -8,8 +8,8 @@ import (
 
 templ PostBase(p Post) {
     @layout.Base() {
-        <div id="blog">
-            <div class="w-[85%]">
+        <div id="blog" class="ph:float-none">
+            <div class="sm:w-[85%] ph:w-full ph:pl-[15px] ph:pr-[15px] sm:pl-0">
                 <div id="content">
                     @styles.BlogStyle()
                     @GetContent(p)

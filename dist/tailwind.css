@@ -556,6 +556,10 @@ video {
   top: 20px;
 }
 
+.float-right {
+  float: right;
+}
+
 .m-0 {
   margin: 0px;
 }
@@ -568,16 +572,13 @@ video {
   height: 400px;
 }
 
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .h-full {
   height: 100%;
-}
-
-.w-\[80\%\] {
-  width: 80%;
-}
-
-.w-\[85\%\] {
-  width: 85%;
 }
 
 .cursor-pointer {
@@ -586,10 +587,6 @@ video {
 
 .list-none {
   list-style-type: none;
-}
-
-.flex-row {
-  flex-direction: row;
 }
 
 .flex-col {
@@ -602,11 +599,6 @@ video {
 
 .border {
   border-width: 1px;
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r {
@@ -630,10 +622,6 @@ video {
 
 .p-0 {
   padding: 0px;
-}
-
-.pl-\[20\%\] {
-  padding-left: 20%;
 }
 
 .text-4xl {
@@ -703,6 +691,20 @@ video {
   .navlistitem:hover {
     text-decoration-color: #35155D;
   }
+
+  body {
+    background-color: #1e293b;
+  }
+}
+
+@media (max-width: 360px) {
+  blockquote {
+    width: 70%;
+  }
+
+  ul {
+    padding-left: 25px;
+  }
 }
 
 .hover\:bg-\[200px\]:hover {
@@ -714,9 +716,62 @@ video {
   color: rgb(209 100 169 / var(--tw-text-opacity));
 }
 
-:is(:where(.dark) .dark\:bg-slate-800) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+@media (min-width: 360px) {
+  .ph\:float-none {
+    float: none;
+  }
+
+  .ph\:ml-\[4px\] {
+    margin-left: 4px;
+  }
+
+  .ph\:w-full {
+    width: 100%;
+  }
+
+  .ph\:pl-\[15px\] {
+    padding-left: 15px;
+  }
+
+  .ph\:pl-\[4px\] {
+    padding-left: 4px;
+  }
+
+  .ph\:pr-\[15px\] {
+    padding-right: 15px;
+  }
+}
+
+@media (min-width: 640px) {
+  .sm\:flex {
+    display: flex;
+  }
+
+  .sm\:w-\[80\%\] {
+    width: 80%;
+  }
+
+  .sm\:w-\[85\%\] {
+    width: 85%;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:pl-0 {
+    padding-left: 0px;
+  }
+
+  .sm\:pl-\[10\%\] {
+    padding-left: 10%;
+  }
+}
+
+@media (min-width: 1240px) {
+  .xl\:pl-\[15\%\] {
+    padding-left: 15%;
+  }
 }
 
 :is(:where(.dark) .dark\:from-bluey) {

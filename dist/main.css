@@ -26,4 +26,18 @@
     .navlistitem:hover {
         text-decoration-color: #35155D;
     }
+
+    body {
+        background-color: #1e293b;
+    }
+}
+
+@media (max-width: 360px) {
+    blockquote {
+        width: 70%;
+    }
+
+    ul {
+        padding-left: 25px;
+    }
 }
