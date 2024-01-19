@@ -18,10 +18,12 @@ func main() {
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
 		port = ":3000"
+	} else {
+		port = "0.0.0.0:" + port
 	}
 
 	s := http.Server{
-		Addr:    "0:0:0:0:" + port,
+		Addr:    port,
 		Handler: app,
 	}
 
@@ -31,12 +33,13 @@ func main() {
 	app.GET("/404", handler.UtilHandler{}.Handle404Show)
 	app.GET("/about", handler.AboutHandler{}.HandleAboutShow)
 	app.GET("/blog", handler.BlogHandler{Posts: blogPosts}.HandleBlogShow)
+	app.GET("/", handler.BlogHandler{Posts: blogPosts}.HandleBlogShow)
 
 	for _, post := range blogPosts {
 		app.GET(fmt.Sprintf("/blog/%s", post.Name[:len(post.Name)-3]), handler.PostHandler{Post: post}.HandlePostShow)
 	}
 
-	log.Printf("server is listening at %s....", port)
+	log.Printf("server is listening at %s...", port)
 	if err := s.ListenAndServe(); err != http.ErrServerClosed {
 		log.Fatal(err)
 	}

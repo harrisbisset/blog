@@ -10,14 +10,16 @@ templ Base() {
             <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet"/>
         </head>
         <body id="trueBody" class="flex flex-col bg-white dark:bg-slate-800 h-full">
-            <main class="overflow-auto">
-                <div id="body" class="pl-[20%] flex flex-row w-[80%]">
-                    @navComponent()
-                    { children... }
-                </div>
-            </main>
-            <footer class="h-[400px]">
-            </footer>
+            <div id="content">
+                <main class="overflow-auto">
+                    <div id="body" class="pl-[20%] flex flex-row w-[80%]">
+                        @navComponent()
+                        { children... }
+                    </div>
+                </main>
+                <footer class="h-[400px]">
+                </footer>
+            </div>
         </body>
     </html>
 }
