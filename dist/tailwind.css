@@ -581,6 +581,10 @@ video {
   height: 100%;
 }
 
+.w-\[80\%\] {
+  width: 80%;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -624,6 +628,19 @@ video {
   padding: 0px;
 }
 
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -645,11 +662,6 @@ video {
 
 .text-transparent {
   color: transparent;
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .transition-all {
