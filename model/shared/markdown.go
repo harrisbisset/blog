@@ -60,7 +60,7 @@ func GetPosts() []Post {
 	}
 
 	// orders array
-	for i := len(ord) - 1; i >= 0; i-- {
+	for i := len(ord); i >= 1; i-- {
 		for _, o := range ord {
 			if o == i {
 				postBs = append(postBs, tPost[i])
