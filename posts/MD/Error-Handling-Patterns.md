@@ -1,6 +1,6 @@
 ---
 title: 'Error Handling Patterns'
-publishedAt: '2024-02-XX'
+publishedAt: '2024-02-21'
 summary: 'A look into error handling patterns for language design'
 order: 2
 ---
