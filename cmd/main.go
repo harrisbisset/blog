@@ -14,7 +14,7 @@ import (
 func main() {
 	blogPosts, err := shared.GetPosts()
 	if err != nil {
-		log.Panicf("%v, no files found")
+		log.Panicf("%v, no files found", err)
 	}
 
 	app := echo.New()
