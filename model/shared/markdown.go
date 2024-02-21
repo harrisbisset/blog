@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"io/fs"
 	"log"
 	"os"
 	"strings"
@@ -15,11 +16,7 @@ import (
 	"github.com/yuin/goldmark/parser"
 )
 
-func GetPosts() []Post {
-	var postBs []Post
-	var ord []int
-	var tPost []Post
-
+func GetPosts() ([]Post, error) {
 	markdown := goldmark.New(
 		goldmark.WithExtensions(
 			meta.Meta,
@@ -28,47 +25,69 @@ func GetPosts() []Post {
 
 	files, err := os.ReadDir("posts/MD/")
 	if err != nil {
-		fmt.Println("no files")
-		log.Fatal(err)
+		return nil, err
 	}
 
+	unorderedPosts := getFilesContents(files, markdown)
+	orderedPosts := orderPosts(unorderedPosts)
+
+	return orderedPosts, nil
+}
+
+func orderPosts(posts []Post) []Post {
+	count := 1
+	for count < len(posts) {
+		item := posts[count-1]
+		count2 := count
+
+		for count2 > 0 && posts[count2-2].Order > item.Order {
+			posts[count2-1] = posts[count2-2]
+			count2 -= 1
+		}
+
+		posts[count2-1] = item
+		count += 1
+	}
+
+	return posts
+}
+
+func getFilesContents(files []fs.DirEntry, markdown goldmark.Markdown) []Post {
+	var posts []Post
+
 	for _, file := range files {
+
+		if strings.Compare(file.Name()[len(file.Name())-2:], ".md") != 0 {
+			log.Print("file not markdown")
+			continue
+		}
+
 		data, err := os.ReadFile(fmt.Sprintf("posts/MD/%s", file.Name()))
 		if err != nil {
-			log.Panicf("failed reading data from file: %s", err)
+			log.Print(err)
+			continue
 		}
 
 		var buf bytes.Buffer
 		context := parser.NewContext()
 		if err := markdown.Convert([]byte(data), &buf, parser.WithContext(context)); err != nil {
-			panic(err)
+			log.Print(err)
+			continue
 		}
-
-		// need to handle if file in MD isn't markdown
-		// fails on {interface}.(type)
 
 		metaData := meta.Get(context)
-		ord = append(ord, metaData["order"].(int))
+		refName := strings.Replace(file.Name(), ".md", "", 1)
 
-		name := strings.Replace(file.Name(), ".md", "", 1)
-		tPost = append(tPost, Post{
+		posts = append(posts, Post{
 			Name:    metaData["title"].(string),
 			Title:   file.Name(),
+			Order:   metaData["order"].(int),
 			Summary: metaData["summary"].(string),
 			Date:    metaData["publishedAt"].(string),
-			Ref:     fmt.Sprintf("/posts/MD/%s", name)})
+			Ref:     fmt.Sprintf("/posts/MD/%s", refName)})
 	}
 
-	// orders array
-	for i := len(ord) - 1; i >= 0; i-- {
-		for _, o := range ord {
-			if o == i+1 {
-				postBs = append(postBs, tPost[i])
-			}
-		}
-	}
-
-	return postBs
+	return posts
 }
 
 func unsafe(html string) templ.Component {

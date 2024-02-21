@@ -12,7 +12,11 @@ import (
 )
 
 func main() {
-	blogPosts := shared.GetPosts()
+	blogPosts, err := shared.GetPosts()
+	if err != nil {
+		log.Panicf("%v, no files found")
+	}
+
 	app := echo.New()
 
 	port := os.Getenv("PORT")
