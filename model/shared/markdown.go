@@ -8,6 +8,7 @@ import (
 	"io/fs"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/a-h/templ"
@@ -28,50 +29,56 @@ func GetPosts() ([]Post, error) {
 		return nil, err
 	}
 
-	unorderedPosts := getFilesContents(files, markdown)
-	orderedPosts := orderPosts(unorderedPosts)
+	unorderedPosts, errs := GetFilesContents("posts/MD/", files, markdown)
+	if len(errs) != 0 {
+		for i := range errs {
+			log.Print(errs[i])
+		}
+	}
+	orderedPosts := OrderPosts(unorderedPosts)
 
 	return orderedPosts, nil
 }
 
-func orderPosts(posts []Post) []Post {
+func OrderPosts(posts []Post) []Post {
 	count := 1
 	for count < len(posts) {
-		item := posts[count-1]
+		item := posts[count]
 		count2 := count
 
-		for count2 > 0 && posts[count2-2].Order > item.Order {
-			posts[count2-1] = posts[count2-2]
+		for count2 > 0 && posts[count2-1].Order < item.Order {
+			posts[count2] = posts[count2-1]
 			count2 -= 1
 		}
 
-		posts[count2-1] = item
+		posts[count2] = item
 		count += 1
 	}
 
 	return posts
 }
 
-func getFilesContents(files []fs.DirEntry, markdown goldmark.Markdown) []Post {
+func GetFilesContents(path string, files []fs.DirEntry, markdown goldmark.Markdown) ([]Post, []error) {
 	var posts []Post
+	var truthyErr []error
 
 	for _, file := range files {
 
-		if strings.Compare(file.Name()[len(file.Name())-2:], ".md") != 0 {
-			log.Print("file not markdown")
+		if strings.Compare(filepath.Ext(file.Name()), ".md") != 0 {
+			truthyErr = append(truthyErr, fmt.Errorf("%s not markdown, %s", file.Name(), filepath.Ext(file.Name())))
 			continue
 		}
 
-		data, err := os.ReadFile(fmt.Sprintf("posts/MD/%s", file.Name()))
+		data, err := os.ReadFile(fmt.Sprintf("%s%s", path, file.Name()))
 		if err != nil {
-			log.Print(err)
+			truthyErr = append(truthyErr, err)
 			continue
 		}
 
 		var buf bytes.Buffer
 		context := parser.NewContext()
 		if err := markdown.Convert([]byte(data), &buf, parser.WithContext(context)); err != nil {
-			log.Print(err)
+			truthyErr = append(truthyErr, err)
 			continue
 		}
 
@@ -87,7 +94,7 @@ func getFilesContents(files []fs.DirEntry, markdown goldmark.Markdown) []Post {
 			Ref:     fmt.Sprintf("/posts/MD/%s", refName)})
 	}
 
-	return posts
+	return posts, truthyErr
 }
 
 func unsafe(html string) templ.Component {
