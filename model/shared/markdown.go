@@ -111,14 +111,17 @@ func GetContent(post Post) templ.Component {
 	}
 
 	// removes metadata from content
+	// done by second ---
 	c := 0
 	index := 0
-	for i, j := range data {
+	for i, j := range data[3:] {
 		if j == 45 {
 			c++
-			if c == 6 {
+			if c == 3 {
 				index = i
 			}
+		} else {
+			c = 0
 		}
 	}
 	data = data[index:]

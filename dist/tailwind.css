@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -728,6 +728,26 @@ video {
   color: rgb(209 100 169 / var(--tw-text-opacity));
 }
 
+:is(.dark .dark\:from-bluey) {
+  --tw-gradient-from: #4477CE var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(68 119 206 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+:is(.dark .dark\:to-pinky) {
+  --tw-gradient-to: #2b222a var(--tw-gradient-to-position);
+}
+
+:is(.dark .dark\:text-bluey) {
+  --tw-text-opacity: 1;
+  color: rgb(68 119 206 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 @media (min-width: 360px) {
   .ph\:float-none {
     float: none;
@@ -784,24 +804,4 @@ video {
   .xl\:pl-\[15\%\] {
     padding-left: 15%;
   }
-}
-
-:is(:where(.dark) .dark\:from-bluey) {
-  --tw-gradient-from: #4477CE var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(68 119 206 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-:is(:where(.dark) .dark\:to-pinky) {
-  --tw-gradient-to: #2b222a var(--tw-gradient-to-position);
-}
-
-:is(:where(.dark) .dark\:text-bluey) {
-  --tw-text-opacity: 1;
-  color: rgb(68 119 206 / var(--tw-text-opacity));
-}
-
-:is(:where(.dark) .dark\:text-white) {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
