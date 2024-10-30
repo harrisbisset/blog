@@ -1,5 +1,5 @@
 function setColorScheme(scheme) {
-    document.documentElement.className = scheme;
+    document.documentElement.classList.add(scheme);
     return
 }
   

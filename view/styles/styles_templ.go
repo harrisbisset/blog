@@ -45,6 +45,18 @@ func BlogStyle() templ.Component {
             margin-bottom: 7px;
         }
 
+        h3 {
+            color: #4b4599;
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+
+        h4 {
+            color: #7600d7;
+            font-size: 1.25rem;
+            line-height: 1.7rem;
+        }
+
         p, li {
             font-family: "Open Sans";
             margin-top: 2px;
@@ -80,13 +92,37 @@ func BlogStyle() templ.Component {
         }
 
         hr {
-            border: 1px #1e293b;
+            border-color: #1e293b;
+        }
+
+        code {
+            width: fit-content;
+            display: block;
+            background-color: #fbf2fe;
+            border-radius: 25px;
+            padding-top: 5px;
+            padding-right: 5px;
+            padding-bottom: 5px;
+            padding-left: 40px;
+            box-shadow: inset 30px 0 #dedddd;
+        }
+
+        em {
+            padding-right: 2px;
         }
 
         @media (prefers-color-scheme: dark) {
 
             h2 {
                 color: #4477CE;
+            }
+
+            h3 {
+                color: #7670c1;
+            }
+
+            h4 {
+                color: #a687c0;
             }
 
             p {
@@ -102,7 +138,13 @@ func BlogStyle() templ.Component {
             }
 
             hr {
-                background-color: black;
+                border-color: black;
+            }
+
+            code {
+                color: #71b6d7;
+                background-color: #222832;
+                box-shadow: inset 30px 0 #171c24;
             }
         }
     `

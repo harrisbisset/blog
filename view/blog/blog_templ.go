@@ -35,7 +35,7 @@ func BlogBase(p []Post) templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"blog\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"blog\" class=\"pt-[50px]\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -81,7 +81,7 @@ func postLinks(p []Post) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		for i, post := range p {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"cursor-pointer\" id=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"cursor-pointer pb-5\" id=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -97,7 +97,7 @@ func postLinks(p []Post) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-trigger=\"click\" hx-target=\"#trueBody\"><h1 class=\"text-4xl leading-[3rem] m-0 bg-gradient-to-r from-pinky to-purpur dark:from-bluey dark:to-pinky dark:text-bluey bg-clip-text text-transparent transition-all duration-500 ease-in-out hover:bg-[200px] hover:text-[#d164a9]\" style=\"font-family:&#39;Open Sans&#39;;\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-trigger=\"click\" hx-target=\"#trueBody\"><h1 class=\"text-4xl leading-[3rem] m-0 bg-gradient-to-r from-pinky to-purpur dark:from-[#8CABFF] dark:to-purpur bg-clip-text text-transparent transition-all duration-500 ease-in-out hover:bg-[200px] hover:text-[#d164a9]\" style=\"font-family:&#39;Open Sans&#39;;\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -106,7 +106,7 @@ func postLinks(p []Post) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1><div><i class=\"text-slate-900 dark:text-white\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1><div><i class=\"text-slate-900 dark:text-white pb-1\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -120,7 +120,7 @@ func postLinks(p []Post) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if i == 0 {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"text-slate-900 dark:text-white\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"text-slate-900 dark:text-white pb-2\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -134,7 +134,7 @@ func postLinks(p []Post) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<hr class=\"text-purpur\"></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<hr class=\"border-black dark:border-purpur\"></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

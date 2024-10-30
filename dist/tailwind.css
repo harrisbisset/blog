@@ -548,7 +548,7 @@ video {
   position: sticky;
 }
 
-.left-\[100\%\] {
+.left-full {
   left: 100%;
 }
 
@@ -556,12 +556,16 @@ video {
   top: 20px;
 }
 
-.float-right {
-  float: right;
-}
-
 .m-0 {
   margin: 0px;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.block {
+  display: block;
 }
 
 .flex {
@@ -579,6 +583,10 @@ video {
 
 .h-full {
   height: 100%;
+}
+
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-\[80\%\] {
@@ -601,8 +609,9 @@ video {
   overflow: auto;
 }
 
-.border {
-  border-width: 1px;
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .bg-gradient-to-r {
@@ -633,12 +642,28 @@ video {
   padding-bottom: 4rem;
 }
 
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
 }
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pt-\[50px\] {
+  padding-top: 50px;
 }
 
 .text-4xl {
@@ -648,11 +673,6 @@ video {
 
 .leading-\[3rem\] {
   line-height: 3rem;
-}
-
-.text-purpur {
-  --tw-text-opacity: 1;
-  color: rgb(209 100 169 / var(--tw-text-opacity));
 }
 
 .text-slate-900 {
@@ -676,6 +696,10 @@ video {
 
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  color-scheme: light dark;
 }
 
 .navlistitem {
@@ -728,19 +752,19 @@ video {
   color: rgb(209 100 169 / var(--tw-text-opacity));
 }
 
-:is(.dark .dark\:from-bluey) {
-  --tw-gradient-from: #4477CE var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(68 119 206 / 0) var(--tw-gradient-to-position);
+:is(.dark .dark\:border-purpur) {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 100 169 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:from-\[\#8CABFF\]) {
+  --tw-gradient-from: #8CABFF var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(140 171 255 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-:is(.dark .dark\:to-pinky) {
-  --tw-gradient-to: #2b222a var(--tw-gradient-to-position);
-}
-
-:is(.dark .dark\:text-bluey) {
-  --tw-text-opacity: 1;
-  color: rgb(68 119 206 / var(--tw-text-opacity));
+:is(.dark .dark\:to-purpur) {
+  --tw-gradient-to: #d164a9 var(--tw-gradient-to-position);
 }
 
 :is(.dark .dark\:text-white) {
@@ -801,7 +825,7 @@ video {
 }
 
 @media (min-width: 1240px) {
-  .xl\:pl-\[15\%\] {
-    padding-left: 15%;
+  .xl\:pl-\[20\%\] {
+    padding-left: 20%;
   }
 }
