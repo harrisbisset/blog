@@ -22,7 +22,6 @@ WORKDIR /blog
 
 COPY --from=build /blog/main ./
 COPY --from=build /blog/blog_posts/published/ ./blog/blog_posts/published/
-COPY --from=build /blog/dist/ ./dist/
 COPY --from=build /blog/render/images ./render/images/
 COPY --from=build /blog/render/dist ./render/dist/
 
