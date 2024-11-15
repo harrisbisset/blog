@@ -1,9 +1,0 @@
-/.vscode
-/about
-templ/about_templ.go
-/blog.exe
-templ/blog_templ.go
-/index
-templ/main_templ.go
-templ/styles_templ.go
-Dockerfile
