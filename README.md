@@ -1,6 +1,6 @@
 # My Blog
 
-A blog written in go, using echo, templ, htmx and tailwind.
+A blog written in go, using fiber, templ, htmx and tailwind.
 
 
 ## TODO:
