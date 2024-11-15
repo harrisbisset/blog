@@ -33,7 +33,7 @@ func Show(posts []models.Post) templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"pt-[40px]\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"pt-[40px] ph:w-[70%] sm:w-auto\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -50,11 +50,11 @@ func Show(posts []models.Post) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(fmt.Sprintf("/blog/%s", post.Name[:len(post.Name)-3])))
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(fmt.Sprintf("/blog/%s", post.Title)))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-trigger=\"click\" hx-target=\"#trueBody\"><h1 class=\"text-4xl leading-[3rem] m-0 bg-gradient-to-r from-pinky to-purpur dark:from-[#8CABFF] dark:to-purpur bg-clip-text text-transparent transition-all duration-500 ease-in-out hover:bg-[200px] hover:text-[#d164a9]\" style=\"font-family:&#39;Open Sans&#39;;\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-trigger=\"click\" hx-target=\"body\"><h1 class=\"text-4xl font-semibold leading-[3rem] m-0 bg-gradient-to-r from-pinky to-purpur dark:from-[#8CABFF] dark:to-purpur bg-clip-text text-transparent transition-all duration-500 ease-in-out hover:bg-[200px] hover:text-[#d164a9]\" style=\"font-family:&#39;Open Sans&#39;;\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

@@ -18,7 +18,7 @@ func main() {
 	app.Get("/about", components.AboutPageShow)
 
 	for _, post := range models.GetPostList() {
-		app.Get(fmt.Sprintf("/blog/%s", post.Name[:len(post.Name)-3]), components.BlogPostWrapper{Post: post}.Handle)
+		app.Get(fmt.Sprintf("/blog/%s", post.Title), components.BlogPostWrapper{Post: post}.Handle)
 	}
 
 	app.Static("/dist", "./render/dist")

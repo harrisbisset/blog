@@ -5,11 +5,9 @@ import "github.com/harrisbisset/blog/render/views/view_layout"
 
 templ BlogPost(p models.Post) {
 	@view_layout.Main() {
-		<div class="sm:w-[85%] ph:w-full ph:pl-[15px] ph:pr-[15px] sm:pl-0">
-			<div id="content">
-				@BlogStyle()
-				@models.GetContent(p)
-			</div>
+		<div class="pr-[15px]">
+			@BlogStyle()
+			@models.GetContent(p)
 		</div>
 	}
 }
@@ -20,6 +18,7 @@ templ BlogStyle() {
             color: #d164a9;
             font-size: 2.25rem;
             line-height: 3rem;
+            width: 90%;
         }
 
         h2 {
@@ -34,7 +33,7 @@ templ BlogStyle() {
         }
 
         h3 {
-            color: #4b4599;
+            color: #7600d7;
             font-size: 1.5rem;
             line-height: 2rem;
         }
@@ -45,6 +44,10 @@ templ BlogStyle() {
             line-height: 1.7rem;
         }
 
+        h1, h2, h3, h4 {
+            font-weight: 600;
+        }
+
         p, li {
             font-family: "Open Sans";
             margin-top: 2px;
@@ -52,9 +55,17 @@ templ BlogStyle() {
         }
 
         blockquote {
+            width: 90%;
             background-color: #eee8f4;
             padding: 0px;
         }
+
+        blockquote ~ blockquote {
+            width: 100%;
+            background-color: #eee8f4;
+            padding: 0px;
+        }
+
 
         p {
             padding: 8px;
@@ -84,15 +95,17 @@ templ BlogStyle() {
         }
 
         code {
-            width: fit-content;
             display: block;
             background-color: #fbf2fe;
             border-radius: 25px;
             padding-top: 5px;
             padding-right: 5px;
             padding-bottom: 5px;
-            padding-left: 40px;
-            box-shadow: inset 30px 0 #dedddd;
+            padding-left: 12px;
+            border-left-width: 15px;
+            border-left-color: #dedddd;
+            overflow-x: scroll;
+            width: 100%;
         }
 
         em {
@@ -106,7 +119,7 @@ templ BlogStyle() {
             }
 
             h3 {
-                color: #7670c1;
+                color: #a687c0;
             }
 
             h4 {
@@ -122,6 +135,12 @@ templ BlogStyle() {
             }
 
             blockquote {
+                width: 90%;
+                background-color: #0f172a;
+            }
+
+            blockquote ~ blockquote {
+                width: 100%;
                 background-color: #0f172a;
             }
 
@@ -132,7 +151,7 @@ templ BlogStyle() {
             code {
                 color: #71b6d7;
                 background-color: #222832;
-                box-shadow: inset 30px 0 #171c24;
+                border-left-color: #171c24;
             }
         }
     </style>

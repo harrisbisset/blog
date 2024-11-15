@@ -13,6 +13,9 @@ module.exports = {
         bluey: "#4477CE",
         lightBluey: "#8CABFF",
       },
+      screens: {
+        ph: "360px",
+      },
     },
   },
   plugins: [],

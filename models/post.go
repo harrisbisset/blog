@@ -136,7 +136,7 @@ func GetContent(post Post) templ.Component {
 			c = 0
 		}
 	}
-	data = data[index:]
+	data = data[index+4:]
 
 	var buf bytes.Buffer
 	if err := goldmark.Convert([]byte(data), &buf); err != nil {

@@ -32,7 +32,7 @@ func BlogPost(p models.Post) templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"sm:w-[85%] ph:w-full ph:pl-[15px] ph:pr-[15px] sm:pl-0\"><div id=\"content\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"pr-[15px]\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -44,7 +44,7 @@ func BlogPost(p models.Post) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -86,6 +86,7 @@ func BlogStyle() templ.Component {
             color: #d164a9;
             font-size: 2.25rem;
             line-height: 3rem;
+            width: 90%;
         }
 
         h2 {
@@ -100,7 +101,7 @@ func BlogStyle() templ.Component {
         }
 
         h3 {
-            color: #4b4599;
+            color: #7600d7;
             font-size: 1.5rem;
             line-height: 2rem;
         }
@@ -111,6 +112,10 @@ func BlogStyle() templ.Component {
             line-height: 1.7rem;
         }
 
+        h1, h2, h3, h4 {
+            font-weight: 600;
+        }
+
         p, li {
             font-family: "Open Sans";
             margin-top: 2px;
@@ -118,9 +123,17 @@ func BlogStyle() templ.Component {
         }
 
         blockquote {
+            width: 90%;
             background-color: #eee8f4;
             padding: 0px;
         }
+
+        blockquote ~ blockquote {
+            width: 100%;
+            background-color: #eee8f4;
+            padding: 0px;
+        }
+
 
         p {
             padding: 8px;
@@ -150,15 +163,17 @@ func BlogStyle() templ.Component {
         }
 
         code {
-            width: fit-content;
             display: block;
             background-color: #fbf2fe;
             border-radius: 25px;
             padding-top: 5px;
             padding-right: 5px;
             padding-bottom: 5px;
-            padding-left: 40px;
-            box-shadow: inset 30px 0 #dedddd;
+            padding-left: 12px;
+            border-left-width: 15px;
+            border-left-color: #dedddd;
+            overflow-x: scroll;
+            width: 100%;
         }
 
         em {
@@ -172,7 +187,7 @@ func BlogStyle() templ.Component {
             }
 
             h3 {
-                color: #7670c1;
+                color: #a687c0;
             }
 
             h4 {
@@ -188,6 +203,12 @@ func BlogStyle() templ.Component {
             }
 
             blockquote {
+                width: 90%;
+                background-color: #0f172a;
+            }
+
+            blockquote ~ blockquote {
+                width: 100%;
                 background-color: #0f172a;
             }
 
@@ -198,7 +219,7 @@ func BlogStyle() templ.Component {
             code {
                 color: #71b6d7;
                 background-color: #222832;
-                box-shadow: inset 30px 0 #171c24;
+                border-left-color: #171c24;
             }
         }
     `

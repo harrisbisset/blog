@@ -50,11 +50,15 @@ func Main() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</script></head><body class=\"flex flex-col min-h-full dark:bg-slate light:bg-[#eaf3f9]\"><div class=\"xl:pl-[20%] sm:pl-[10%] ph:pl-[4px] ph:ml-[4px] sm:flex sm:flex-row sm:w-[80%]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</script></head><body class=\"flex flex-col min-h-full dark:bg-slate light:bg-[#eaf3f9]\"><div class=\"xl:pl-[20%] sm:pl-[10%] ph:pl-[20px] flex sm:flex-row ph:flex-row-reverse w-[90%]\"><div class=\"w-full\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -86,7 +90,7 @@ func navComponent() templ.Component {
 			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<aside class=\"sticky h-fit left-full\"><ul class=\"list-none m-0 p-0 sticky top-[20px]\"><li class=\"navlistitem\" hx-get=\"/\" hx-target=\"body\" hx-replace-url=\"true\" hx-push-url=\"true\" hx-swap=\"show:window:top\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<aside class=\"h-fit ph:right-0 sm:right-auto sm:left-full ph:absolute sm:sticky\"><ul class=\"list-none m-0 p-0 sticky top-[20px]\"><li class=\"navlistitem\" hx-get=\"/\" hx-target=\"body\" hx-replace-url=\"true\" hx-push-url=\"true\" hx-swap=\"show:window:top\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
