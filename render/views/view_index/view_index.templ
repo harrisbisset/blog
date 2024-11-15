@@ -6,11 +6,20 @@ import "fmt"
 
 templ Show(posts []models.Post) {
 	@view_layout.Main() {
-		<div class="pt-[40px] ph:w-[70%] sm:w-auto">
+		<div class="pt-[40px] ph:w-[70%] sm:w-[500px]">
 			for i, post := range posts {
-				<div class="cursor-pointer pb-5" id={ post.Ref } hx-get={ fmt.Sprintf("/blog/%s", post.Title) } hx-trigger="click" hx-target="body">
+				<div
+ 					class="cursor-pointer pb-5"
+ 					id={ post.Ref }
+ 					hx-get={ fmt.Sprintf("/blog/%s", post.Title) }
+ 					hx-trigger="click"
+ 					hx-target="body"
+ 					hx-replace-url="true"
+ 					hx-push-url="true"
+ 					hx-swap="show:window:top"
+				>
 					<h1
- 						class="text-4xl font-semibold leading-[3rem] m-0 bg-gradient-to-r from-pinky to-purpur dark:from-[#8CABFF] dark:to-purpur bg-clip-text text-transparent transition-all duration-500 ease-in-out hover:bg-[200px] hover:text-[#d164a9]"
+ 						class="text-4xl font-semibold leading-[3rem] m-0 bg-gradient-to-r from-pinky to-purpur dark:from-[#8CABFF] dark:to-purpur select-none bg-clip-text text-transparent transition-all duration-500 ease-in-out hover:bg-[200px] hover:text-[#d164a9]"
  						style="font-family:'Open Sans';"
 					>
 						{ post.Name }

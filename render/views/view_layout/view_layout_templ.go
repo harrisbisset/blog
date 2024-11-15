@@ -50,7 +50,7 @@ func Main() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</script></head><body class=\"flex flex-col min-h-full dark:bg-slate light:bg-[#eaf3f9]\"><div class=\"xl:pl-[20%] sm:pl-[10%] ph:pl-[20px] flex sm:flex-row ph:flex-row-reverse w-[90%]\"><div class=\"w-full\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</script></head><body class=\"flex flex-col min-h-full dark:bg-slate light:bg-[#eaf3f9]\"><div class=\"xl:pl-[15%] sm:pl-[10%] ph:pl-[20px] flex sm:flex-row ph:flex-row-reverse w-[90%]\"><div class=\"w-full\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
