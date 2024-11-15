@@ -1,0 +1,49 @@
+package view_layout
+
+templ Main() {
+	<!DOCTYPE html>
+	<html id="html" lang="en" class="dark:bg-slate light:bg-[#eaf3f9] h-full m-auto">
+		<head>
+			<title>Harris' Blog</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet"/>
+			<link rel="stylesheet" href="/dist/tailwind.css"/>
+			<script defer src="/dist/htmx.min.js"></script>
+			<script defer src="/dist/preload.js"></script>
+		</head>
+		<body class="flex flex-col min-h-full dark:bg-slate light:bg-[#eaf3f9]">
+			<div class="xl:pl-[20%] sm:pl-[10%] ph:pl-[4px] ph:ml-[4px] sm:flex sm:flex-row sm:w-[80%]">
+				{ children... }
+				@navComponent()
+			</div>
+			<footer class="h-[400px]"></footer>
+		</body>
+	</html>
+}
+
+templ navComponent() {
+	<aside class="sticky h-fit left-full">
+		<ul class="list-none m-0 p-0 sticky top-[20px]">
+			<li
+ 				class="navlistitem"
+ 				hx-get="/"
+ 				hx-target="body"
+ 				hx-replace-url="true"
+ 				hx-push-url="true"
+ 				hx-swap="show:window:top"
+			>
+				blog
+			</li>
+			<li
+ 				class="navlistitem"
+ 				hx-get="/about"
+ 				hx-target="body"
+ 				hx-replace-url="true"
+ 				hx-push-url="true"
+ 				hx-swap="show:window:top"
+			>
+				about
+			</li>
+		</ul>
+	</aside>
+}
