@@ -9,6 +9,7 @@ COPY ./cmd/ ./
 COPY ./render/ ./render/
 COPY ./components/ ./components/
 COPY ./models/ ./models/
+COPY ./blog_posts/rendered/ ./blog_posts/rendered/
 COPY ./blog_posts/published/ ./blog_posts/published/
 
 RUN go mod download
@@ -22,6 +23,7 @@ WORKDIR /blog
 
 COPY --from=build /blog/main ./
 COPY --from=build /blog/blog_posts/published/ ./blog_posts/published/
+COPY --from=build /blog/blog_posts/rendered/ ./blog_posts/rendered/
 COPY --from=build /blog/render/images ./render/images/
 COPY --from=build /blog/render/dist ./render/dist/
 
