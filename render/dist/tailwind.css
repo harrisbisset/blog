@@ -724,6 +724,7 @@ video {
 
 body {
   color-scheme: light dark;
+  font-family: "Open Sans";
 }
 
 .navlistitem {
@@ -743,13 +744,13 @@ body {
 
 @media (prefers-color-scheme: dark) {
   .navlistitem {
-    -webkit-text-decoration: underline 0.15em #8CABFF;
-            text-decoration: underline 0.15em #8CABFF;
+    -webkit-text-decoration: underline 0.15em #8cabff;
+            text-decoration: underline 0.15em #8cabff;
     color: white;
   }
 
   .navlistitem:hover {
-    text-decoration-color: #35155D;
+    text-decoration-color: #35155d;
   }
 
   body {
