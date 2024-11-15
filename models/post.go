@@ -27,7 +27,17 @@ type Post struct {
 }
 
 func RenderPosts() {
+	for _, post := range GetPostList() {
 
+		f, err := os.Create("./blog_posts/rendered/" + post.Title)
+		if err != nil {
+			panic(err)
+		}
+		defer f.Close()
+
+		f.WriteString(GetContentString(post))
+
+	}
 }
 
 func GetPostList() []Post {
@@ -116,7 +126,7 @@ func unsafe(html string) templ.Component {
 	})
 }
 
-func GetContent(post Post) templ.Component {
+func GetContentString(post Post) string {
 	data, err := os.ReadFile("." + post.Ref + ".md")
 	if err != nil {
 		log.Panicf("failed reading data from file: %s", err)
@@ -143,5 +153,15 @@ func GetContent(post Post) templ.Component {
 		log.Fatalf("failed to convert markdown to HTML: %v", err)
 	}
 
-	return unsafe(buf.String())
+	return buf.String()
+}
+
+func GetContent(post Post) templ.Component {
+
+	data, err := os.ReadFile("./blog_posts/rendered/" + post.Title)
+	if err != nil {
+		log.Panicf("failed reading data from file: %s", err)
+	}
+
+	return unsafe(string(data))
 }
