@@ -621,8 +621,16 @@ video {
   list-style-type: none;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.whitespace-pre {
+  white-space: pre;
 }
 
 .border-black {
@@ -691,6 +699,11 @@ video {
   line-height: 2.5rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .font-semibold {
   font-weight: 600;
 }
@@ -706,6 +719,10 @@ video {
 
 .text-transparent {
   color: transparent;
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .transition-all {
@@ -766,6 +783,11 @@ body {
   ul {
     padding-left: 25px;
   }
+}
+
+.before\:content-\[\'_-_\'\]::before {
+  --tw-content: ' - ';
+  content: var(--tw-content);
 }
 
 .hover\:bg-\[200px\]:hover {

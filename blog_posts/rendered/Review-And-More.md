@@ -68,4 +68,3 @@ See mum, I'm not a docile, sleepy bear; I'm a fearless, man-eating bear!</p>
 </ul>
 <p>There could also be lower quality content from youtubers (in another feed), but there's abviously a limit here. Like personally I think TechLead's content doesn't meet the bar, but other people may disagree, and content massively varies. It would have to be a curated list, maybe one where people could submit singular videos, or their channel.</p>
 <p><strong><em>Side Note</em></strong>: The video side of things could even be a feature for youtube. Some sort of regulated community of channels (if you are reading this, and you work on the youtube side of things at Google: This is might be a good idea).</p>
-<h3></h3>
