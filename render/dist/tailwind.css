@@ -607,6 +607,10 @@ video {
   width: 100%;
 }
 
+.max-w-\[900px\] {
+  max-width: 900px;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -682,10 +686,6 @@ video {
   padding-right: 15px;
 }
 
-.pt-2 {
-  padding-top: 0.5rem;
-}
-
 .pt-8 {
   padding-top: 2rem;
 }
@@ -742,6 +742,7 @@ video {
 body {
   color-scheme: light dark;
   font-family: "Open Sans";
+  font-size: large;
 }
 
 .navlistitem {
