@@ -1,18 +1,10 @@
-module github.com/harrisbisset/blog/frontend
+module github.com/harrisbisset/blog/backend/client
 
 go 1.23.4
-
-replace github.com/harrisbisset/blog/internal/render => ../internal/render/
-
-replace github.com/harrisbisset/blog/internal/posts => ../internal/posts/
 
 require (
 	github.com/a-h/templ v0.2.793
 	github.com/gofiber/fiber/v2 v2.52.5
-	github.com/harrisbisset/blog/internal/posts v0.0.0-00010101000000-000000000000
-	github.com/harrisbisset/blog/internal/render v0.0.0-00010101000000-000000000000
-	github.com/yuin/goldmark v1.7.8
-	github.com/yuin/goldmark-meta v1.1.0
 )
 
 require (
@@ -27,5 +19,4 @@ require (
 	github.com/valyala/fasthttp v1.51.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/sys v0.23.0 // indirect
-	gopkg.in/yaml.v2 v2.3.0 // indirect
 )

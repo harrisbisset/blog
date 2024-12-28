@@ -1,10 +1,10 @@
 package view_index
 
 import "github.com/harrisbisset/blog/frontend/render/views/view_layout"
-import "github.com/harrisbisset/blog/frontend/models"
+import posts "github.com/harrisbisset/blog/internal/posts"
 import "fmt"
 
-templ Show(posts []models.Post) {
+templ Show(posts []posts.Post) {
 	@view_layout.Main() {
 		<div class="pt-[40px] ph:w-[70%] sm:w-[500px]">
 			for i, post := range posts {

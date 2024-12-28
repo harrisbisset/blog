@@ -1,4 +1,4 @@
-package components
+package internal
 
 import (
 	"github.com/a-h/templ"
@@ -6,6 +6,6 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 )
 
-func render(tc templ.Component, ctx *fiber.Ctx) error {
+func Render(tc templ.Component, ctx *fiber.Ctx) error {
 	return adaptor.HTTPHandler(templ.Handler(tc))(ctx)
 }

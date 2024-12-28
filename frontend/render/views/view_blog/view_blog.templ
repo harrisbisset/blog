@@ -1,9 +1,10 @@
 package view_blog
 
 import "github.com/harrisbisset/blog/frontend/models"
+import posts "github.com/harrisbisset/blog/internal/posts"
 import "github.com/harrisbisset/blog/frontend/render/views/view_layout"
 
-templ BlogPost(p models.Post) {
+templ BlogPost(p posts.Post) {
 	@view_layout.Main() {
 		<div class="pr-[15px] max-w-[900px]">
 			@BlogStyle()

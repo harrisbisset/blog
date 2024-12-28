@@ -5,6 +5,7 @@ import (
 	"github.com/harrisbisset/blog/frontend/models"
 	"github.com/harrisbisset/blog/frontend/render/views/view_about"
 	"github.com/harrisbisset/blog/frontend/render/views/view_index"
+	render "github.com/harrisbisset/blog/internal/render"
 )
 
 type (
@@ -13,9 +14,9 @@ type (
 )
 
 func (i IndexHandler) Handle(ctx *fiber.Ctx) error {
-	return render(view_index.Show(models.GetPostList()), ctx)
+	return render.Render(view_index.Show(models.GetPostList()), ctx)
 }
 
 func (b AboutHandler) Handle(ctx *fiber.Ctx) error {
-	return render(view_about.Show(), ctx)
+	return render.Render(view_about.Show(), ctx)
 }

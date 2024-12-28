@@ -1,58 +1,27 @@
 package models
 
 import (
-	"bytes"
 	"context"
-	"fmt"
 	"io"
-	"io/fs"
 	"log"
 	"os"
-	"path/filepath"
-	"strings"
+
+	posts "github.com/harrisbisset/blog/internal/posts"
 
 	"github.com/a-h/templ"
 	"github.com/yuin/goldmark"
 	meta "github.com/yuin/goldmark-meta"
-	"github.com/yuin/goldmark/parser"
 )
 
-type Post struct {
-	Name    string
-	Title   string
-	Order   int
-	Summary string
-	Date    string
-	Ref     string
-}
+func GetPostList() []posts.Post {
+	markdown := goldmark.New(goldmark.WithExtensions(meta.Meta))
 
-func RenderPosts() {
-	for _, post := range GetPostList() {
-
-		f, err := os.Create("./blog_posts/rendered/" + post.Title)
-		if err != nil {
-			panic(err)
-		}
-		defer f.Close()
-
-		f.WriteString(GetContentString(post))
-
-	}
-}
-
-func GetPostList() []Post {
-	markdown := goldmark.New(
-		goldmark.WithExtensions(
-			meta.Meta,
-		),
-	)
-
-	files, err := os.ReadDir("blog_posts/published/")
+	files, err := os.ReadDir("./render/posts/published/")
 	if err != nil {
 		panic(err)
 	}
 
-	unorderedPosts, errs := GetFilesContents("blog_posts/published/", files, markdown)
+	unorderedPosts, errs := posts.GetFilesContents("./render/posts/published/", files, markdown)
 	if len(errs) != 0 {
 		for i := range errs {
 			log.Print(errs[i])
@@ -62,7 +31,7 @@ func GetPostList() []Post {
 	return OrderPosts(unorderedPosts)
 }
 
-func OrderPosts(posts []Post) []Post {
+func OrderPosts(posts []posts.Post) []posts.Post {
 	count := 1
 	for count < len(posts) {
 		item := posts[count]
@@ -80,88 +49,14 @@ func OrderPosts(posts []Post) []Post {
 	return posts
 }
 
-func GetFilesContents(path string, files []fs.DirEntry, markdown goldmark.Markdown) ([]Post, []error) {
-	var posts []Post
-	var truthyErr []error
-
-	for _, file := range files {
-
-		if strings.Compare(filepath.Ext(file.Name()), ".md") != 0 {
-			truthyErr = append(truthyErr, fmt.Errorf("%s not markdown, %s", file.Name(), filepath.Ext(file.Name())))
-			continue
-		}
-
-		data, err := os.ReadFile(fmt.Sprintf("%s%s", path, file.Name()))
-		if err != nil {
-			truthyErr = append(truthyErr, err)
-			continue
-		}
-
-		var buf bytes.Buffer
-		context := parser.NewContext()
-		if err := markdown.Convert([]byte(data), &buf, parser.WithContext(context)); err != nil {
-			truthyErr = append(truthyErr, err)
-			continue
-		}
-
-		metaData := meta.Get(context)
-		refName := strings.Replace(file.Name(), ".md", "", 1)
-
-		posts = append(posts, Post{
-			Name:    metaData["title"].(string),
-			Title:   file.Name(),
-			Order:   metaData["order"].(int),
-			Summary: metaData["summary"].(string),
-			Date:    metaData["publishedAt"].(string),
-			Ref:     fmt.Sprintf("/blog_posts/published/%s", refName)})
+func GetContent(post posts.Post) templ.Component {
+	data, err := os.ReadFile("./render/posts/rendered/" + post.Title)
+	if err != nil {
+		log.Panicf("failed reading data from file: %s", err)
 	}
 
-	return posts, truthyErr
-}
-
-func unsafe(html string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
-		_, err = io.WriteString(w, html)
+		_, err = io.WriteString(w, string(data))
 		return
 	})
-}
-
-func GetContentString(post Post) string {
-	data, err := os.ReadFile("." + post.Ref + ".md")
-	if err != nil {
-		log.Panicf("failed reading data from file: %s", err)
-	}
-
-	// removes metadata from content
-	// done by second ---
-	c := 0
-	index := 0
-	for i, j := range data[3:] {
-		if j == 45 {
-			c++
-			if c == 3 {
-				index = i
-			}
-		} else {
-			c = 0
-		}
-	}
-	data = data[index+4:]
-
-	var buf bytes.Buffer
-	if err := goldmark.Convert([]byte(data), &buf); err != nil {
-		log.Fatalf("failed to convert markdown to HTML: %v", err)
-	}
-
-	return buf.String()
-}
-
-func GetContent(post Post) templ.Component {
-
-	data, err := os.ReadFile("./blog_posts/rendered/" + post.Title)
-	if err != nil {
-		log.Panicf("failed reading data from file: %s", err)
-	}
-
-	return unsafe(string(data))
 }

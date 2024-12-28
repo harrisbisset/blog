@@ -1,4 +1,4 @@
-module github.com/harrisbisset/blog/backend
+module github.com/harrisbisset/blog/internal/render
 
 go 1.23.4
 
