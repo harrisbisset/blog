@@ -26,8 +26,8 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a .
 FROM alpine:latest AS static-stage
 WORKDIR /frontend
 COPY --from=build-stage /frontend/ /frontend/
-COPY --from=build-stage /blog_posts/ /blog_posts/
-COPY --from=build-stage /backend/pre-render/ /backend/pre-render/
+COPY --from=fetch-stage /blog_posts/ /blog_posts/
+COPY --from=fetch-stage /backend/pre-render/ /backend/pre-render/
 
 RUN apk add curl
 RUN curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.17/tailwindcss-linux-x64
