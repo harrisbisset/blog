@@ -31,6 +31,6 @@ RUN ["./tailwindcss", "-c", "/frontend/tailwind.config.js", "-i", "/frontend/mai
 FROM alpine:latest as final
 WORKDIR /frontend
 COPY --from=static-stage /frontend/ ./
-ENTRYPOINT ["/frontend/main"]
+ENTRYPOINT ["/frontend/frontend"]
 EXPOSE 80
 EXPOSE 443
