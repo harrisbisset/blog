@@ -18,6 +18,7 @@ RUN ["templ", "generate"]
 # Build
 FROM golang:1.23.4 AS build-stage
 WORKDIR /frontend
+COPY --from=fetch-stage /internal /internal/
 COPY --from=generate-stage /frontend /frontend/
 RUN CGO_ENABLED=0 GOOS=linux go build -a .
 
