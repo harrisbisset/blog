@@ -19,7 +19,6 @@ RUN ["templ", "generate"]
 FROM golang:1.23.4 AS build-stage
 WORKDIR /frontend
 COPY --from=generate-stage /frontend /frontend/
-COPY --from=generate-stage /internal /internal/
 RUN CGO_ENABLED=0 GOOS=linux go build -a .
 
 # Static
