@@ -2,19 +2,21 @@
 
 # Fetch
 FROM golang:1.23.4 AS fetch-stage
-COPY ./frontend/ /frontend/
+WORKDIR /frontend
+COPY ./frontend/ ./
 RUN go mod download
 
 # Generate
 FROM ghcr.io/a-h/templ:latest AS generate-stage
-COPY --chown=65532:65532 . /frontend
 WORKDIR /frontend
+COPY --chown=65532:65532 --from=fetch-stage /frontend /frontend/
 RUN ["templ", "generate"]
 
 # Build
 FROM golang:1.23.4 AS build-stage
 COPY --from=generate-stage /frontend /frontend/
 WORKDIR /frontend
+RUN ls
 RUN CGO_ENABLED=0 GOOS=linux go build -a .
 
 # Static
