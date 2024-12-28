@@ -1,4 +1,4 @@
 [build]
 builder = "DOCKERFILE"
 buildCommand = "docker build --no-cache ."
-dockerfilePath = "/frontend/Dockerfile"
+dockerfilePath = "/Dockerfile"

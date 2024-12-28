@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	models.RenderPosts()
 	app := fiber.New()
 
 	app.Get("/", components.IndexHandler{}.Handle)

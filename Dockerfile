@@ -2,7 +2,7 @@
 
 # Fetch
 FROM golang:1.23.4 AS fetch-stage
-COPY ./ /frontend/
+COPY ./frontend/ /frontend/
 RUN go mod download
 
 # Generate
