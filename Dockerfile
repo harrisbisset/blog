@@ -2,17 +2,18 @@
 
 # Fetch
 FROM golang:1.23.4 AS fetch-stage
-WORKDIR /frontend
 COPY ./frontend/ /frontend/
 COPY ./internal/ /internal/
 COPY ./blog_posts/ /blog_posts/
 COPY ./backend/pre-render/ /backend/pre-render/
 
+
 # Generate
 FROM ghcr.io/a-h/templ:latest AS generate-stage
-WORKDIR /frontend
 COPY --chown=65532:65532 --from=fetch-stage /frontend /frontend/
+WORKDIR /frontend
 RUN ["templ", "generate"]
+
 
 # Build
 FROM golang:1.23.4 AS build-stage
@@ -31,10 +32,10 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a .
 
 # Static
 FROM alpine:latest AS static-stage
-WORKDIR /frontend
 COPY --from=build-stage /frontend/ /frontend/
 COPY --from=build-stage /backend/pre-render/ /backend/pre-render/
 COPY --from=fetch-stage /blog_posts/ /blog_posts/
+WORKDIR /frontend
 
 RUN apk add curl
 RUN curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.17/tailwindcss-linux-x64
@@ -50,8 +51,8 @@ RUN cp -r /blog_posts/rendered/ /frontend/render/posts/
 
 # Deploy
 FROM alpine:latest AS final
+COPY --from=static-stage /frontend/ /frontend/
 WORKDIR /frontend
-COPY --from=static-stage /frontend/ ./
 ENTRYPOINT ["/frontend/frontend"]
 EXPOSE 80
 EXPOSE 443
