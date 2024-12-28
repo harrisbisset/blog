@@ -15,7 +15,7 @@ RUN ["templ", "generate"]
 FROM golang:1.22.1 AS build-stage
 COPY --from=generate-stage /frontend /frontend/
 WORKDIR /frontend
-RUN CGO_ENABLED=0 GOOS=linux go build -a /frontend/main
+RUN CGO_ENABLED=0 GOOS=linux go build -a .
 
 # Static
 FROM alpine:latest AS static-stage
