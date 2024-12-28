@@ -12,7 +12,7 @@ WORKDIR /frontend
 RUN ["templ", "generate"]
 
 # Build
-FROM golang:1.22.1 AS build-stage
+FROM golang:1.23.4 AS build-stage
 COPY --from=generate-stage /frontend /frontend/
 WORKDIR /frontend
 RUN CGO_ENABLED=0 GOOS=linux go build -a .
@@ -28,7 +28,7 @@ RUN ["mv", "tailwindcss-linux-x64", "tailwindcss"]
 RUN ["./tailwindcss", "-c", "/frontend/tailwind.config.js", "-i", "/frontend/main.css", "-o", "/frontend/render/dist/tailwind.min.css", "--minify"]
 
 # Deploy
-FROM alpine:latest as final
+FROM alpine:latest AS final
 WORKDIR /frontend
 COPY --from=static-stage /frontend/ ./
 ENTRYPOINT ["/frontend/frontend"]
