@@ -1,6 +1,3 @@
 *.exe
 bin/
-**_templ.go
-tailwind.css
-tailwind.min.css
 blog_posts/rendered/

@@ -13,9 +13,11 @@ import (
 const root = "./blog_posts/"
 
 func main() {
-	err := os.Mkdir(root+"rendered", os.ModePerm)
-	if err != nil {
-		panic(err)
+	if _, err := os.Stat(root + "rendered"); err != nil && os.IsNotExist(err) {
+		err := os.Mkdir(root+"rendered", os.ModePerm)
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	for _, post := range GetPostList() {

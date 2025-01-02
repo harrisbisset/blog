@@ -1,14 +1,19 @@
 package view_blog
 
-import "github.com/harrisbisset/blog/frontend/models"
-import posts "github.com/harrisbisset/blog/internal/posts"
-import "github.com/harrisbisset/blog/frontend/render/views/view_layout"
+import (
+	"github.com/harrisbisset/blog/frontend/models"
+	"github.com/harrisbisset/blog/frontend/render/views/view_layout"
+	posts "github.com/harrisbisset/blog/internal/posts"
+)
 
 templ BlogPost(p posts.Post) {
 	@view_layout.Main() {
-		<div class="pr-[15px] max-w-[900px]">
-			@BlogStyle()
+		@BlogStyle()
+		<div>
 			@models.GetContent(p)
+		</div>
+		<div class="my-4">
+			@view_layout.MobileNavDisplay()
 		</div>
 	}
 }
@@ -111,49 +116,6 @@ templ BlogStyle() {
 
         em {
             padding-right: 2px;
-        }
-
-        @media (prefers-color-scheme: dark) {
-
-            h2 {
-                color: #4477CE;
-            }
-
-            h3 {
-                color: #a687c0;
-            }
-
-            h4 {
-                color: #a687c0;
-            }
-
-            p {
-                padding: 8px;
-            }
-
-            p, li {
-                color: white;
-            }
-
-            blockquote {
-                width: 90%;
-                background-color: #0f172a;
-            }
-
-            blockquote ~ blockquote {
-                width: 100%;
-                background-color: #0f172a;
-            }
-
-            hr {
-                border-color: black;
-            }
-
-            code {
-                color: #71b6d7;
-                background-color: #222832;
-                border-left-color: #171c24;
-            }
         }
     </style>
 }

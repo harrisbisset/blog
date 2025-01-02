@@ -12,6 +12,7 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/", components.IndexHandler{}.Handle)
+	app.Get("/blog", components.BlogHandler{}.Handle)
 	app.Get("/about", components.AboutHandler{}.Handle)
 
 	for _, post := range models.GetPostList() {
