@@ -4,12 +4,14 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/harrisbisset/blog/frontend/components"
 	"github.com/harrisbisset/blog/frontend/models"
 )
 
 func main() {
 	app := fiber.New()
+	app.Use(logger.New(logger.ConfigDefault))
 
 	app.Get("/", components.IndexHandler{}.Handle)
 	app.Get("/blog", components.BlogHandler{}.Handle)
