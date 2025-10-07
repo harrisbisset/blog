@@ -11,7 +11,7 @@
 		direction === 'SE' && 'hover:shadow-se rounded-b-md border-r-2 border-b-2',
 		direction === 'SW' && 'hover:shadow-sw rounded-b-md border-r-2 border-b-2',
 		direction === 'NW' && 'hover:shadow-nw rounded-t-md border-t-2 border-l-2',
-		'border border-background-1 p-2 h-fit max-w-[80%]'
+		'border border-background-1 p-2 h-fit max-w-[80%] md:max-w-full'
 	]}
 	style:width={width}
 >
