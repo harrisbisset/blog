@@ -1,6 +1,6 @@
 export interface article_t {
 	name: string;
-	published: Date;
+	published: string;
 	description: string;
 	href: string;
 }

@@ -1,5 +1,8 @@
 <script lang="ts">
+	import type { blog_post_t } from '$lib';
 	import { onMount } from 'svelte';
+
+	const { data }: { data: { posts: blog_post_t[] } } = $props();
 
 	let navbar: HTMLElement;
 	onMount(() => {
@@ -14,9 +17,47 @@
 		});
 	});
 
-	let search;
+	let ctrl = $state(false);
+	let q = $state(false);
+	let toggled = $state(false);
 
-	const routes = ['', 'blog', 'articles', 'projects'];
+	let search: HTMLElement;
+	let searchbar: HTMLElement;
+
+	function showSearch() {
+		if (search != null) search.style.display = 'flex';
+		if (searchbar != null) searchbar.focus();
+		toggled = true;
+	}
+
+	onMount(() => {
+		document.addEventListener('keydown', function (e) {
+			if (e.ctrlKey) ctrl = true;
+			if (e.key == 'q') q = true;
+			if (e.key == 'Escape' && search != null) {
+				search.style.display = 'none';
+				toggled = false;
+			}
+
+			if (ctrl && q) {
+				if (toggled) {
+					if (search != null) search.style.display = 'none';
+					toggled = false;
+					return;
+				}
+
+				showSearch();
+			}
+		});
+
+		document.addEventListener('keyup', function (e) {
+			if (e.ctrlKey) ctrl = false;
+			if (e.key == 'q') q = false;
+		});
+	});
+
+	// const routes = ['', 'blog', 'articles', 'projects'];
+	const routes = ['', 'blog'];
 </script>
 
 <div class="fixed flex w-full items-center justify-center pt-1">
@@ -47,10 +88,40 @@
 					aria-label="search"
 					spellcheck="false"
 					class="text-text-500 w-full outline-0"
+					onclick={showSearch}
 				/>
 				<kbd>ctrl</kbd>
 				<kbd>q</kbd>
 			</form>
 		</div>
 	</nav>
+</div>
+
+<div
+	class="absolute top-0 hidden h-lvh w-lvw items-center justify-center backdrop-blur-xs"
+	bind:this={search}
+>
+	<div class="border border-background-1 bg-white px-6 py-2">
+		<div class="flex flex-col gap-2.5">
+			<div class="flex flex-row gap-8">
+				<form>
+					<input
+						bind:this={searchbar}
+						placeholder="search"
+						class="border-b border-background-1 outline-0"
+						type="text"
+					/>
+				</form>
+				<button
+					class="cursor-pointer"
+					onclick={() => {
+						if (search != null) search.style.display = 'none';
+					}}>Close</button
+				>
+			</div>
+			<div>
+				🚧 Under Maintenence 🚧
+			</div>
+		</div>
+	</div>
 </div>

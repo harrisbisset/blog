@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { blog_post_t } from '$lib/blog/index.js';
+	import type { blog_post_t } from '$lib';
 
 	const { data } = $props();
 
@@ -27,6 +27,6 @@
 	:global(p) {
 		padding-bottom: 3px;
 		padding-top: 3px;
-        font-size: var(--text-lg);
+		font-size: var(--text-lg);
 	}
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { blog_post_t } from '$lib/blog';
+	import type { blog_post_t } from '$lib';
 	import Post from './post.svelte';
 
 	const { posts }: { posts: blog_post_t[] } = $props();

@@ -3,8 +3,8 @@
 	import ProfilePicture from '$lib/assets/profileCard.jpg?enhanced';
 </script>
 
-<BoxCase>
-	<enhanced:img class="rounded-md" alt="profile" src={ProfilePicture} />
+<BoxCase direction={'SE'} width={"300px"}>
+	<enhanced:img class="rounded-b-md" alt="profile" src={ProfilePicture} />
 	<div class="flex flex-col gap-y-1.5 pt-1.5 pb-3 pl-2">
 		<div class="text-base leading-tight italic">
 			BSc CompSci @ <a

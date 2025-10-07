@@ -1,11 +1,6 @@
-export type { project_t } from '$lib/components/projects';
+export type { project_t } from '$lib/data/projects/index';
+export type { post_metadata_t, blog_post_t } from '$lib/data/blog';
+export type { article_t } from '$lib/data/articles/index';
+export type { direction_t } from '$lib/components/util/index';
 
-export { default as BoxCase } from '$lib/components/boxcase.svelte';
-
-export function formatDate(date: Date): string {
-	return `${appendZero(date.getDate())}/${appendZero(date.getMonth())}/${date.getFullYear()}`;
-}
-
-function appendZero(n: number): string {
-	return n < 10 ? `0${n}` : `${n}`;
-}
+export { default as BoxCase } from '$lib/components/util/boxcase.svelte';

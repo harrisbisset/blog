@@ -1,4 +1,4 @@
-import { getBlogPosts } from '$lib/blog';
+import { getBlogPosts } from '$lib/data/blog';
 import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async () => {

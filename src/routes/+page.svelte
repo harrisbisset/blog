@@ -11,8 +11,8 @@
 	<div class="flex w-full justify-center pt-10">
 		<Posts posts={data.posts} />
 		<div class="h-fit flex flex-col gap-7">
-			<Articles articles={data.articles_data} />
-			<Projects projects={data.projects_data}/>
+			<Articles articles={data.articles} />
+			<Projects projects={data.projects}/>
 		</div>
 	</div>
 

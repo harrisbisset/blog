@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { BoxCase, formatDate } from '$lib';
-	import type { article_t } from '.';
+	import { BoxCase, type article_t } from '$lib';
 
 	const { articles }: { articles: article_t[] } = $props();
 </script>
 
-<BoxCase>
+<BoxCase direction={'NW'} width={undefined}>
 	<div class="flex flex-col gap-2">
 		<div class="text-xl font-semibold">Latest Articles</div>
 		<div class="flex flex-col gap-2">
@@ -19,9 +18,9 @@
 							class="text-lg underline decoration-highlight-2 decoration-1 hover:bg-highlight-1"
 							title={article.href}
 						>
-							<a href={article.href}>{article.name}</a>
+							<a target="_blank" rel="noopener noreferrer" href={article.href}>{article.name}</a>
 						</h3>
-						<div class="text-sm italic">{formatDate(article.published)}</div>
+						<div class="text-sm italic">{article.published}</div>
 					</div>
 					<div>{article.description}</div>
 				</div>
