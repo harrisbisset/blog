@@ -1,4 +1,0 @@
-[build]
-builder = "DOCKERFILE"
-buildCommand = "docker build --no-cache ."
-dockerfilePath = "/Dockerfile"
