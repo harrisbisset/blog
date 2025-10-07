@@ -11,12 +11,6 @@
 </svelte:head>
 
 <Nav {data} />
-<div class="nav-buffer">
+<div class="pt-24 md:pt-[72px]">
 	{@render children?.()}
 </div>
-
-<style>
-	.nav-buffer {
-		padding-top: var(--navbar-height);
-	}
-</style>

@@ -7,8 +7,6 @@
 	--color-highlight-1: #dba45c;
 	--color-highlight-2: #337763;
 
-	--navbar-height: 72px;
-
 	--shadow-ne: 2px -2px var(--color-highlight-2);
 	--shadow-se: 2px 2px var(--color-highlight-2);
 	--shadow-sw: -2px 2px var(--color-highlight-2);

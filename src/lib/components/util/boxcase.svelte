@@ -2,7 +2,7 @@
 	import type { direction_t } from '.';
 
 
-	let { children, direction, width="300" }: { children: any; direction: direction_t; width: string | undefined } = $props();
+	let { children, direction, width="300px" }: { children: any; direction: direction_t; width: string | undefined } = $props();
 </script>
 
 <section
@@ -11,7 +11,7 @@
 		direction === 'SE' && 'hover:shadow-se rounded-b-md border-r-2 border-b-2',
 		direction === 'SW' && 'hover:shadow-sw rounded-b-md border-r-2 border-b-2',
 		direction === 'NW' && 'hover:shadow-nw rounded-t-md border-t-2 border-l-2',
-		'border border-background-1 p-2 h-fit'
+		'border border-background-1 p-2 h-fit max-w-[80%]'
 	]}
 	style:width={width}
 >
