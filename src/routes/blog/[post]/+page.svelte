@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { blog_post_t } from '$lib';
+	import { MediaQuery } from 'svelte/reactivity';
 
 	const { data } = $props();
 
@@ -15,8 +16,8 @@
 	}
 </script>
 
-<div class="flex w-full flex-col items-center">
-	<div class="w-4/5">
+<div class="flex w-full flex-col items-center pb-36">
+	<div class="blog-post w-4/5">
 		{#if component != undefined}
 			<component.component />
 		{/if}
@@ -24,9 +25,25 @@
 </div>
 
 <style>
-	:global(p) {
+	@media only screen and (min-width: 448px) {
+		:global(.blog-post > * p) {
+			width: 75%;
+		}
+	}
+
+	:global(.blog-post > * p) {
 		padding-bottom: 3px;
 		padding-top: 3px;
 		font-size: var(--text-lg);
+	}
+
+	:global(.blog-post > * a) {
+		text-decoration: underline;
+		text-decoration-color: var(--color-highlight-2);
+		text-decoration-thickness: 1px;
+	}
+
+	:global(.blog-post > * a:hover) {
+		background-color: var(--color-highlight-1);
 	}
 </style>

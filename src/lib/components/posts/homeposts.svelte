@@ -6,7 +6,7 @@
 </script>
 
 <div class="w-full flex justify-center">
-	<BoxCase direction={'SE'} width={'80%'}>
+	<BoxCase direction={'SW'} width={'80%'}>
 		<div class="w-4/5">
 			<Posts {posts} />
 		</div>

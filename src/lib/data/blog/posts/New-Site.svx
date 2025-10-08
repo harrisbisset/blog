@@ -1,0 +1,50 @@
+---
+title: "Hello World (again)"
+date: "2025-10-08"
+description: "Bit of a shakeup in design and technology, and it's a good one"
+---
+
+<script lang="ts">
+    import Heading from '../util/heading.svelte'
+    import Content from '../util/content.svelte'
+    import SideNote from '../util/sidenote.svelte'
+    import Embold from '../util/embold.svelte'
+</script>
+
+<Heading heading={"Hello World (again)"} heading_level={1} />
+
+<Content>
+
+From Golang and HTMX to Sveltekit and the world of Typescript. I think it's a good change. One thing that made the jump was Tailwind, it's pretty great actually! The reason why I did this, was I was looking into what Typescript frameworks could offer, and it's actually pretty amazing.
+
+<SideNote>
+The sheer amount of effort put into the language, just in terms of libraies is astounding, and finding them is also incredibly easy.
+</SideNote>
+
+Specifically the site is simply a personal website, and wasn't doing anything crazy on the backend, so I opted to switch to an frontend focused solution.
+
+</Content>
+
+<Heading heading={"So how did you get here?"} heading_level={2} sub_title={"the long way round"} />
+
+<Content>
+
+Back when you were still in primary school, I wasn't born yet... *Let's start that again*
+
+Earlier this year, I had wanted to move [vdeck.uk](https://vdeck.uk) off of the aforementioned golang and htmx hybrid since I wanted to to a redesign and the styling was already messy, so why not test out another solution, since very little code lived on the backend?
+
+<Embold>
+I got a working prototype in 6 hours having never used Svelte or Sveltekit.
+</Embold>
+
+The only thing I needed to work on was mobile styling, the new design and connecting to a database. I mean 6 hours isn't blazingly fast, but I didn't rush through it, and didn't shit out code I'd have to rewrite. Anyway, it felt fast, iterated fast and was easy - more than expected.
+
+</Content>
+
+<Heading heading={"And was it useful?"} heading_level={2} sub_title={"useful's a pretty strong word, but yeah"} />
+
+<Content>
+
+Yes. Development speed is definitely quicker, and on the group project (20 people) at university I'm working on, I seem to be the person who knows the most about frontend development, suprisingly. Although that's partly a function  of qtching so much content from people like [Theo](https://www.youtube.com/t3dotgg). That isn't directly tangible, but I've always found the knowledge gap is the greatest hurdle in programming.
+
+</Content>
