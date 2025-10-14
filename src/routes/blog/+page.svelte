@@ -4,8 +4,6 @@
 	const { data } = $props();
 </script>
 
-<div class="flex h-full w-full justify-center">
-	<div class="flex w-4/5 flex-col">
-		<Posts posts={data.posts} />
-	</div>
+<div class="flex h-full w-full justify-center pt-3">
+	<Posts posts={data.posts} />
 </div>

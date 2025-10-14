@@ -3,9 +3,9 @@
 	import ProfilePicture from '$lib/assets/profileCard.jpg?enhanced';
 </script>
 
-<BoxCase direction={'SE'} width={"300px"}>
-	<enhanced:img class="rounded-b-md" alt="profile" src={ProfilePicture} />
-	<div class="flex flex-col gap-y-1.5 pt-1.5 pb-3 pl-2">
+<div class="w-[300px]">
+	<enhanced:img class="rounded-t-sm" alt="profile" src={ProfilePicture} />
+	<div class="flex flex-col gap-y-1.5 px-1 pt-1.5 pb-3">
 		<div class="text-base leading-tight italic">
 			BSc CompSci @ <a
 				class="cursor-pointer decoration-background-1 decoration-2 hover:bg-highlight-1 hover:underline"
@@ -13,7 +13,7 @@
 			>
 		</div>
 
-		<div>All I want to do is boost kpi numbers and row.</div>
+		<div class="h-full">All I want to do is boost kpi numbers and row.</div>
 	</div>
 	<div class="flex justify-center space-x-4">
 		<a
@@ -67,4 +67,4 @@
 			</svg>
 		</a>
 	</div>
-</BoxCase>
+</div>

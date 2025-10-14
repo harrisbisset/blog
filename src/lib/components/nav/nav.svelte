@@ -10,7 +10,7 @@
 			if (navbar == null) return;
 
 			if (window.pageYOffset > 15) {
-				navbar.style.boxShadow = '10px 10px #dba45c';
+				navbar.style.boxShadow = '0px 8px 6px -8px var(--color-highlight-2)';
 			} else {
 				navbar.style.boxShadow = '';
 			}
@@ -60,9 +60,9 @@
 	const routes = ['', 'blog'];
 </script>
 
-<div class="fixed flex w-full items-center justify-center pt-1">
+<div class="fixed z-50 flex w-full items-center justify-center">
 	<nav
-		class="flex md:h-16 w-fit flex-col md:flex-row items-center justify-center gap-2 md:gap-8 rounded-b-sm border border-background-1 bg-white px-2 py-2 md:px-10 md:py-0.5"
+		class="flex w-1/2 flex-col items-center justify-center bg-white gap-2 px-2 py-2 md:h-16 md:flex-row md:gap-8 md:px-10 md:py-0.5"
 		bind:this={navbar}
 	>
 		<div class="flex flex-row gap-2">
@@ -80,7 +80,7 @@
 		</div>
 
 		<div class="flex w-fit flex-row items-center justify-end">
-			<form class="flex w-48 flex-row gap-1 border border-border px-3 py-1" action="/search">
+			<form class="flex w-48 flex-row gap-1 border-b-2 border-border px-3 py-1" action="/search">
 				<input
 					type="search"
 					name="search"
@@ -119,9 +119,7 @@
 					}}>Close</button
 				>
 			</div>
-			<div>
-				🚧 Under Maintenence 🚧
-			</div>
+			<div>🚧 Under Maintenence 🚧</div>
 		</div>
 	</div>
 </div>

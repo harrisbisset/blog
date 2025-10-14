@@ -5,12 +5,12 @@
 	const { metadata, path }: { metadata: post_metadata_t, path: string } = $props();
 </script>
 
-<a href={`/blog/${path}`} class="border-b py-3">
-	<div class="flex flex-col gap-2">
-		<div class="gap flex flex-col">
-			<h2 class="text-3xl font-semibold">{metadata.title}</h2>
-			<div class="text-base">Published: {metadata.date}</div>
+<a href={`/blog/${path}`} class="pb-2 group">
+	<div class="flex flex-col gap">
+		<div class="flex flex-col">
+			<h2 class="text-2xl font-semibold transition-colors group-hover:text-highlight-2">{metadata.title}</h2>
+			<div class="text-sm italic">{metadata.date}</div>
 		</div>
-		<div class="text-lg">{metadata.description}</div>
+		<div class="text-base font-sem">{metadata.description}</div>
 	</div>
 </a>

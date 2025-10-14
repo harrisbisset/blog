@@ -1,1 +1,1 @@
-export type direction_t = 'NE' | 'SE' | 'SW' | 'NW';
+export type colour_t = 'blue' | 'orange';

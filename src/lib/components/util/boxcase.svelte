@@ -1,19 +1,26 @@
 <script lang="ts">
-	import type { direction_t } from '.';
+	import type { colour_t } from '.';
 
-
-	let { children, direction, width="300px" }: { children: any; direction: direction_t; width: string | undefined } = $props();
+	let {
+		children,
+		name,
+		width = 'var(--standard-width)',
+		colour
+	}: { children: any; name: string; colour: colour_t; width: string | undefined } = $props();
 </script>
 
-<section
-	class={[
-		direction === 'NE' && 'hover:shadow-ne rounded-t-md border-t-2 border-r-2',
-		direction === 'SE' && 'hover:shadow-se rounded-b-md border-r-2 border-b-2',
-		direction === 'SW' && 'hover:shadow-sw rounded-b-md border-l-2 border-b-2',
-		direction === 'NW' && 'hover:shadow-nw rounded-t-md border-t-2 border-l-2',
-		'border border-background-1 p-2 h-fit max-w-[80%] md:max-w-full'
-	]}
-	style:width={width}
->
-	{@render children?.()}
+<section style={`width: ${width};`} class="min-w-(--standard-width)">
+	<div class="flex flex-col gap-1">
+		<div>
+			<div class="relative z-10 text-2xl font-bold lowercase">{name}</div>
+			<div
+				class={[
+					colour === 'orange' && 'border-highlight-1 shadow-highlight-1',
+					colour === 'blue' && 'border-background-2 shadow-background-2',
+					'relative -top-2.5 z-0 w-full border-t-10  shadow-[0_4px_10px_-2px] '
+				]}
+			></div>
+		</div>
+		{@render children?.()}
+	</div>
 </section>
