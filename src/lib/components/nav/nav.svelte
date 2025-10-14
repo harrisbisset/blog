@@ -62,7 +62,7 @@
 
 <div class="fixed z-50 flex w-full items-center justify-center">
 	<nav
-		class="flex w-1/2 flex-col items-center justify-center bg-white gap-2 px-2 py-2 md:h-16 md:flex-row md:gap-8 md:px-10 md:py-0.5"
+		class="flex w-[320px] flex-col items-center justify-center gap-2 bg-white px-2 py-2 md:h-16 md:w-1/2 md:flex-row md:gap-8 md:px-10 md:py-0.5"
 		bind:this={navbar}
 	>
 		<div class="flex flex-row gap-2">
