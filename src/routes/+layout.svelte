@@ -11,6 +11,6 @@
 </svelte:head>
 
 <Nav {data} />
-<div class="pt-24 md:pt-[100px] md:px-10">
+<div class="pt-26 md:pt-[100px] md:px-10">
 	{@render children?.()}
 </div>
