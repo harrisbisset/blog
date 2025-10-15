@@ -62,12 +62,12 @@
 
 <div class="fixed z-50 flex w-full items-center justify-center">
 	<nav
-		class="flex w-[320px] flex-col items-center justify-center gap-2 bg-white px-2 py-2 md:h-16 md:w-1/2 md:flex-row md:gap-8 md:px-10 md:py-0.5"
+		class="flex w-5/6 flex-col items-center justify-center gap-2 bg-white px-2 py-2 md:h-16 md:w-1/2 md:flex-row md:gap-8 md:px-10 md:py-0.5"
 		bind:this={navbar}
 	>
 		<div class="flex flex-row gap-2">
 			{#each routes as route}
-				<a class="px-1 italic" href={`/${route}`}>
+				<a class="px-1 italic flex-nowrap flex" href={`/${route}`}>
 					/<span class="underline-highlight-2 underline hover:bg-highlight-1">
 						{#if route != ''}
 							{route}
