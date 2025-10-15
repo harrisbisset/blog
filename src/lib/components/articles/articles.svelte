@@ -4,7 +4,7 @@
 	const { articles }: { articles: article_t[] } = $props();
 </script>
 
-<BoxCase name={'latest articles'} width={undefined} colour={"orange"}>
+<BoxCase TitleComponent={'latest articles'} width={undefined} colour={"orange"}>
 	<div class="flex flex-col gap-2">
 		{#each articles as article, i}
 			{#if i > 0}

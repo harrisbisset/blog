@@ -4,7 +4,7 @@
 	const { projects }: { projects: project_t[] } = $props();
 </script>
 
-<BoxCase name={'featured projects'} width={undefined} colour={'blue'}>
+<BoxCase TitleComponent={'featured projects'} width={undefined} colour={'blue'}>
 	<div class="flex flex-col gap-2">
 		{#each projects as project, i}
 			{#if i > 0}
