@@ -8,7 +8,7 @@
 	<div class="flex flex-col gap-y-1.5 px-1 pt-1.5 pb-3">
 		<div class="text-base leading-tight italic">
 			BSc CompSci @ <a
-				class="cursor-pointer decoration-background-1 decoration-2 hover:bg-highlight-1 hover:underline"
+				class="cursor-pointer decoration-background-1 decoration-2 hover:bg-highlight-1"
 				href="https://www.st-andrews.ac.uk/">St Andrews</a
 			>
 		</div>

@@ -6,11 +6,8 @@
 	--color-background-2: #a5e6d9;
 	--color-highlight-1: #dba45c;
 	--color-highlight-2: #337763;
+	--color-highlight-3: #b8894d;
 
-	--shadow-ne: 2px -2px var(--color-highlight-2);
-	--shadow-se: 2px 2px var(--color-highlight-2);
-	--shadow-sw: -2px 2px var(--color-highlight-2);
-	--shadow-nw: -2px -2px var(--color-highlight-2);
 
 	--standard-width: 300px;
 }

@@ -8,12 +8,12 @@
 {#snippet title_component()}
 	<div>
 		<span>lastest</span>
-		<a href="/blog" class="cursor-pointer transition-colors hover:bg-background-2">posts</a>
+		<a href="/blog" class="cursor-pointer transition-[padding-left] hover:pl-6">posts</a>
 	</div>
 {/snippet}
 
 <BoxCase colour={'orange'} TitleComponent={title_component} width={'80%'}>
-	<div class="w-full md:w-4/5">
+	<div class="w-full md:w-4/5 h-full">
 		<Posts {posts} />
 	</div>
 </BoxCase>

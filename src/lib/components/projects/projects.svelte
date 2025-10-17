@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { BoxCase, type project_t } from '$lib';
+	import Link from '../util/link.svelte';
 
 	const { projects }: { projects: project_t[] } = $props();
 </script>
@@ -11,12 +12,7 @@
 				<div class="h-0.5 w-full bg-highlight-2"></div>
 			{/if}
 			<div class="flex flex-col">
-				<h3
-					class="w-fit text-lg underline decoration-highlight-2 decoration-1 hover:bg-highlight-1"
-					title={project.href}
-				>
-					<a target="_blank" rel="noopener noreferrer" href={project.href}>{project.name}</a>
-				</h3>
+				<Link href={project.href} text={project.name} />
 				<div>{project.description}</div>
 			</div>
 		{/each}

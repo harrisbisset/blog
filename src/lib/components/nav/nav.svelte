@@ -67,14 +67,15 @@
 	>
 		<div class="flex flex-row gap-2">
 			{#each routes as route}
-				<a class="px-1 italic flex-nowrap flex" href={`/${route}`}>
-					/<span class="underline-highlight-2 underline hover:bg-highlight-1">
+				<a class="group flex flex-nowrap px-1 italic" href={`/${route}`}>
+					<span>/</span><span class="pl-0 transition-all group-hover:pl-1">
 						{#if route != ''}
 							{route}
 						{:else}
 							bisset.dev
 						{/if}
 					</span>
+					<div class="pl-1 transition-all group-hover:pl-0"></div>
 				</a>
 			{/each}
 		</div>

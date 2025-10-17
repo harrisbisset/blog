@@ -15,8 +15,8 @@
 	} = $props();
 </script>
 
-<section style={`width: ${width};`} class="min-w-(--standard-width)">
-	<div class="flex flex-col gap-1">
+<section style={`width: ${width};`} class="h-full min-w-(--standard-width)">
+	<div class="flex h-full flex-col gap-1">
 		<div>
 			<div class="text-2xl font-bold lowercase">
 				{#if typeof TitleComponent === 'string'}
@@ -29,7 +29,7 @@
 				class={[
 					colour === 'orange' && 'border-highlight-1 shadow-highlight-1',
 					colour === 'blue' && 'border-background-2 shadow-background-2',
-					'relative -z-10 -top-2.5 w-full border-t-10  shadow-[0_4px_10px_-2px] '
+					'relative -top-2.5 -z-10 w-full border-t-10  shadow-[0_4px_10px_-2px] '
 				]}
 			></div>
 		</div>

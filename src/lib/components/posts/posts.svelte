@@ -6,7 +6,7 @@
 </script>
 
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 h-full">
 	{#each posts as post, i}
 		<Post metadata={post.metadata} path={post.name} />
 	{/each}
