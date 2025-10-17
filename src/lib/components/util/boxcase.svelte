@@ -15,8 +15,8 @@
 	} = $props();
 </script>
 
-<section style={`width: ${width};`} class="h-full min-w-(--standard-width)">
-	<div class="flex h-full flex-col gap-1">
+<section style={`width: ${width};`} class="h-fit min-w-(--standard-width)">
+	<div class="flex h-fit flex-col gap-1">
 		<div>
 			<div class="text-2xl font-bold lowercase">
 				{#if typeof TitleComponent === 'string'}
