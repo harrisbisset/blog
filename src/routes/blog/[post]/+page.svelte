@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { blog_post_t } from '$lib';
-	import { MediaQuery } from 'svelte/reactivity';
 
 	const { data } = $props();
 

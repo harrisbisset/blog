@@ -21,12 +21,8 @@ export async function getBlogPosts(): Promise<Array<blog_post_t>> {
 	});
 
 	for (const [path, o] of Object.entries(modules)) {
-		let metadata = <post_metadata_t>o.metadata;
-		metadata.date = metadata.date;
-
 		let name = path.replace('./posts/', '');
 		name = name.replace('.svx', '');
-
 		posts.push({ metadata: o.metadata, component: o.default, path: path, name: name });
 	}
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Articles from '$lib/components/articles/articles.svelte';
+	import HomeBoard from '$lib/components/board/homeboard.svelte';
 	import Projects from '$lib/components/projects/projects.svelte';
 	import Posts from '../lib/components/posts/homeposts.svelte';
-	import ProfileCard from './profilecard.svelte';
 
 	const { data } = $props();
 </script>
@@ -26,8 +26,10 @@
 				<Articles articles={data.articles} />
 			</div>
 		</div>
-		<div class="col-span-2 flex justify-center md:justify-end">
-			<ProfileCard />
+		<div class="col-span-2 flex w-full justify-center">
+			<div class="xl:w-5/8">
+				<HomeBoard boards={data.boards} />
+			</div>
 		</div>
 	</div>
 </div>

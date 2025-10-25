@@ -15,7 +15,7 @@
 	} = $props();
 </script>
 
-<section style={`width: ${width};`} class="h-fit min-w-(--standard-width)">
+<section style={`width: ${width};`} class="h-fitsa min-w-(--standard-width)">
 	<div class="flex h-fit flex-col gap-1">
 		<div>
 			<div class="text-2xl font-bold lowercase">

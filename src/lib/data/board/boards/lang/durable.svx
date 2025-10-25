@@ -1,0 +1,8 @@
+---
+title: "durability of code"
+part: 1
+date: "2025-10-25"
+description: "failure, failure"
+---
+
+todo

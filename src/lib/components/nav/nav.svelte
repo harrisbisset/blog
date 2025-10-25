@@ -2,8 +2,6 @@
 	import type { blog_post_t } from '$lib';
 	import { onMount } from 'svelte';
 
-	const { data }: { data: { posts: blog_post_t[] } } = $props();
-
 	let navbar: HTMLElement;
 	onMount(() => {
 		document.addEventListener('scroll', function (e) {
@@ -56,8 +54,7 @@
 		});
 	});
 
-	// const routes = ['', 'blog', 'articles', 'projects'];
-	const routes = ['', 'blog'];
+	const routes = ['', 'blog', 'board'];
 </script>
 
 <div class="fixed z-50 flex w-full items-center justify-center">
