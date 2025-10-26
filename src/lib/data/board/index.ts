@@ -26,8 +26,6 @@ export async function getBoards(): Promise<Array<board_t>> {
 		eager: true
 	});
 
-	console.log(modules);
-
 	for (const [path, o] of Object.entries(modules)) {
 		let str = path.replace('./boards/', '');
 		str = str.replace('.svx', '');

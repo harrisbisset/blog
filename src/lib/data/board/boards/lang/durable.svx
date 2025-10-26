@@ -5,4 +5,66 @@ date: "2025-10-25"
 description: "failure, failure"
 ---
 
-todo
+the *durability of code* can be expressed as how likely a program matches expected output, given all inputs
+
+but, unless under specific conditions, this can be a great challenge. not only is it difficult, but building upon this can be restrictive
+
+<div class="pt-4">
+
+    i have a great deal of appreciation for functional languages like haskell and ocaml (despite being awful at things like **.filter()**)
+
+    and i like to know what is in a function's scope and i like them to be self-contained
+
+    but I'd argue these languages are too mirred in concepts and are hard to read for my c-style brain (shoutout to ocaml's default formatting settings)
+    
+</div>
+
+<div class="pt-4">
+
+    now an idea one might have from listening to talks is the concept of **let things crash**
+
+    rather than try to define this behaviour within the typesystem, sometimes we should abort
+
+</div>
+
+<div class="pt-6 font-semibold italic">
+    but i like my functions and i want them to be pure, oh, and i want to write fast code
+</div>
+
+<div class="bg-zinc-100 md:ml-8 py-2 px-4 mt-6 max-w-fit">
+
+```
+// runs in bytecode
+func complexTask(...) complex_t { ... }
+
+// gets compiled
+func (@compile) complexTask(...) complex_t { ... }
+
+// unsafe by default, but can enforce strict typing
+func (@safe) complexTask(...) io complex_t { ... }
+```
+
+</div>
+
+<div class="pt-4">
+    essentially decorators, but pretty versatile
+
+    anyway, i think starting from a fairly loose point, using bytecode could be interesting
+</div>
+
+<div class="pt-4">
+    coming back to the main point, i think that different parts of a program have different requirements regarding durability,
+    
+    and that treating everything the same way means you miss help.
+
+    IO can suck in functional languages, but it can be useful to know about
+
+    likewise, lack of strongly typing means things can be missed or overlooked unless there is total knowledge of what a function does
+</div>
+
+<style>
+
+    pre {
+        overflow: scroll;
+    }
+</style>

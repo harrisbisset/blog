@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { blog_post_t } from '$lib';
 	import { onMount } from 'svelte';
 
 	let navbar: HTMLElement;

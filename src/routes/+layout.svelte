@@ -10,7 +10,7 @@
 	<!-- <link rel="icon" href={favicon} /> -->
 </svelte:head>
 
-<Nav {data} />
+<Nav />
 <div class="pt-26 md:pt-[100px] md:px-10">
 	{@render children?.()}
 </div>

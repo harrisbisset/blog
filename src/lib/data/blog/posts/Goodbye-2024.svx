@@ -5,8 +5,8 @@ description: "What the student wrought, 2024 edition"
 ---
 
 <script lang="ts">
-    import Heading from '../util/heading.svelte'
-    import Content from '../util/content.svelte'
+    import Heading from '$lib/data/util/heading.svelte'
+    import Content from '$lib/data/util/content.svelte'
 </script>
 
 

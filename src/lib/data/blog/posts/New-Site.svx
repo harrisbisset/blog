@@ -5,10 +5,10 @@ description: "Bit of a shakeup in design and technology, and it's a good one"
 ---
 
 <script lang="ts">
-    import Heading from '../util/heading.svelte'
-    import Content from '../util/content.svelte'
-    import SideNote from '../util/sidenote.svelte'
-    import Embold from '../util/embold.svelte'
+    import Heading from '$lib/data/util/heading.svelte'
+    import Content from '$lib/data/util/content.svelte'
+    import SideNote from '$lib/data/util/sidenote.svelte'
+    import Embold from '$lib/data/util/embold.svelte'
 </script>
 
 <Heading heading={"Hello World (again)"} heading_level={1} />
