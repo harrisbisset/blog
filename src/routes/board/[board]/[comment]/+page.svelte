@@ -15,7 +15,7 @@
 </script>
 
 <div class="flex w-full flex-col items-center pb-36">
-	<div class="blog-post w-4/5">
+	<div class="w-4/5">
 		{#if component != undefined}
 			<component.component />
 		{/if}
