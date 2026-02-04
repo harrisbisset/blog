@@ -1,0 +1,11 @@
+---
+title: "checkered patterns"
+part: 1
+date: "04/02/2026"
+---
+
+<script lang="ts">
+    import Checkered from "./checkered.svelte"
+</script>
+
+<Checkered/>

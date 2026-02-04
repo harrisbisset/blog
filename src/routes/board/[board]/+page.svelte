@@ -19,7 +19,7 @@
 			<a href={`/board/${board?.title}/${comment.name}`} class="underline">
 				{comment.name}
 			</a>
-			{#if comment.metadata.description != ''}
+			{#if comment.metadata.description != undefined && comment.metadata.description != ''}
 				<p class="text-sm italic">
 					"{comment.metadata.description}"
 				</p>

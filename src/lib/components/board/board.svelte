@@ -16,10 +16,12 @@
 						<a href={`/board/${board.title}/${comment.name}`} class="underline">
 							{comment.name}
 						</a>
-						{#if comment.metadata.description != ''}
-							<p class="text-sm italic">
-								"{comment.metadata.description}"
-							</p>
+						{#if comment.metadata != undefined}
+							{#if comment.metadata.description != undefined && comment.metadata.description != ''}
+								<p class="text-sm italic">
+									"{comment.metadata.description}"
+								</p>
+							{/if}
 						{/if}
 					</div>
 				{/each}
