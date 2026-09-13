@@ -1,0 +1,56 @@
+---
+title: "Introspecting for The Future"
+date: "2026-05-20"
+description: ""
+---
+
+<script lang="ts">
+    import Heading from '$lib/data/util/heading.svelte'
+    import Content from '$lib/data/util/content.svelte'
+    import SideNote from '$lib/data/util/sidenote.svelte'
+    import Embold from '$lib/data/util/embold.svelte'
+</script>
+
+<Heading heading={"Introspecting for The Future"} heading_level={1} sub_title={"or why we should gather before continuing the indomitable march of progress"} />
+
+<Content>
+
+A perennial complaint in software is that some core building block/s are inherently flawed, and given a clean slate, those pieces wouldn't be chosen to make the puzzle. History vindicates this idea time and time again. It could be argued for reasons not considered technically correct <sup>citation needed</sup>, or that standards are slipping in the process. However, it is undeniable that it happens.
+
+<SideNote>
+What really is standard? I really doubt the percentage of non-ai slop has changed much over the past 35 years.
+
+\- Sincerely a [gyre](https://en.wikipedia.org/wiki/The_Second_Coming_(poem)) hater
+</SideNote>
+
+As time moves on, compute theoretically <sup>citation needed</sup> gets cheaper, classic inefficencies are solved <sup>citation needed</sup>, and the problem space gets smaller. 
+
+<Heading heading={"But smaller only in a single sense"} heading_level={2} sub_title={undefined} />
+
+The internet was not solved last century, generation, decade, or even last year when supposedly software engineering was supposed to no longer be a job. We are constantly seeing an explosion in the number of technical areas of development in computing. You may have noticed that this typically trends in waves of excitement, and I would make the case that this isn't because something interesting only come out every 2-5 years, but rather that there isn't enough time, money or compute to build what the market desires. Thus, I would assert that
+
+<Embold>
+As the capabilities of AI tools increase, we will not find a meaningful reduction in the problem space of computing.
+</Embold>
+
+Until the limits of software, generally, meet fixed physical limits which cannot meaningfully be extended.
+
+<Heading heading={"to recap"} heading_level={3} sub_title={undefined} />
+
+Firstly, software evolution is constantly happening. Secondly, the problem space in computing to enormous. Thirdly, I assert that the problem space in computing is not going to meaningfully decrease even with new AI tools.
+
+Fourthly, these tools are widening the known problem space. To anyone watching the space with even the faintest interest, this last point this has been obvious since the acronym LLM entered the general human vocabulary.
+
+<Heading heading={"Introspecting"} heading_level={2} sub_title={"finally some meat to the article!"} />
+
+The complexity of software is going to rise, and not only that, profitable actions are going to require greater understanding of systems. Hooray, the misers shout, finally, the posers are out of the industry.
+
+Oh, and I should explain myself. If we find reach a point where it's collective knowledge that AI tools meaningfully increase feature output, without introducing significant future problems. A sector of jobs will be put under pressure. Which sector? Which ever is meaningfully sped up (although at this point it's generally thought to be solved, self-contained problems).
+
+Now that the misers have closed the tab in anger, I'll offer the other possibility (although these are possibilities aren't mutually exclusive). Everything is going to explode. Blow up, kahboom. Well, really just the internet, from a landslide of bugs.
+
+Primitives are going to need to change.
+
+[Marc Andressen](https://www.youtube.com/watch?v=qBVe3M2g_SA)
+
+</Content>
