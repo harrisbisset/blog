@@ -3,6 +3,9 @@
 	<div id="chess-box-2"></div>
 	<div id="chess-box-3"></div>
 	<div id="checkered-blue-1"></div>
+	<div></div>
+	<div></div>
+	<div id="patchwork-1"></div>
 </div>
 
 <style>
@@ -49,7 +52,14 @@
 	#checkered-blue-1 {
 		background-image: linear-gradient(90deg, #0542c4 5%, transparent 0%);
 		background-size: 30px 30px;
-		background-position:
-			0 0;
+		background-position: 0 0;
+	}
+
+	#patchwork-1 {
+		background-image:
+			linear-gradient(90deg, #0542c4 50%, transparent 0%),
+			linear-gradient(90deg, #f6aa1d 100%, transparent 0%);
+		background-size: 100%;
+		background-position: left;
 	}
 </style>

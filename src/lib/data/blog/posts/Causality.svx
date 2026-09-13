@@ -1,0 +1,48 @@
+---
+title: "Causal Graphs for Distributed Systems?"
+date: "2026-05-20"
+description: "early thoughts on my dissertation"
+---
+
+<script lang="ts">
+    import Heading from '$lib/data/util/heading.svelte'
+    import Content from '$lib/data/util/content.svelte'
+    import SideNote from '$lib/data/util/sidenote.svelte'
+    import Embold from '$lib/data/util/embold.svelte'
+
+    import DAGtopo from '$lib/assets/DAG-topo.png?enhanced';
+
+</script>
+
+<Heading heading={"Causal Graphs for Distributed Systems?"} heading_level={1} sub_title={"what does it take to find a good error around here"} />
+
+<Content>
+
+How may a developer find the root cause of an error? A question already researched far past the extent an undergraduate could contribute, but one hopefully suited to guide me to a 2:1. Funnily enough, my preliminary findings point me to using Directed Acrylic Graphs, something I just learnt about last year. This whole learning thing is starting to make sense!
+
+Enough yipper yapper, basically what I'm looking to do is:
+
+Find root causes of errors, as a percentage, in a simulated distributed system's event history (history of network packets from all devices). Determining the root cause involves finding which events preceding the error are responsible, and which of those are noise. To complete this project, reasonable contraints are placed on the problem, such as, event timings are aligned, etc.
+
+The project isn't concerned with encoding paths, event history file formats, speed, or in general storage.
+
+Actually searching through the results, I currently imagine a command line 'search console'.
+
+<Heading heading={"Root Cause Analysis"} heading_level={2} sub_title={undefined} /> 
+
+Turns out that's the proper name for what I'm planning on doing.
+
+<SideNote>
+    <enhanced:img alt="" src={DAGtopo} class="w-120"/>
+    A > B > A<sup>1</sup> > C<sup>1</sup> > D(error)<sup>1</sup>
+</SideNote>
+
+Still need to find out good papers on the subject and area, I'm guessing things with a fair few citations. I've also had a small think about representing events in a reasonable way, which also works as a compression step. I'm not entirely sure how to determine whether a part of the graph may be compressed, but it is pictured to the side.
+
+Maybe I could do something like for every unique set of directions from a point, there is an associated name, and we call a point that. If the point is repeated, we put future progress from it in a queue, and discard it if it's not unique at the end. Worth looking this up too, just checking now, there are papers on the subject. Likely not worth trying something new unless the graph creation is hideously slow.
+
+Anyway, that's all for now folks!
+
+</Content>
+
+
